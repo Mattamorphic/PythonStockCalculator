@@ -1,8 +1,7 @@
 '''
-    Name:
-        Stock Model
-    Description:
-        Model for interacting with stock
+    Stock Model
+    Model for interacting with stock
+
     Author:
         Matthew Barber <mfmbarber@gmail.com>
 '''
@@ -15,6 +14,8 @@ from .stock_node import StockNode, StockValue
 class Stock(QObject):
     '''
         Stock model representing stock
+        Args:
+            stock_source (StockSource)  The source of our data
     '''
 
     # Model Data
@@ -35,12 +36,6 @@ class Stock(QObject):
     currentLoadBytes = pyqtSignal(int)
 
     def __init__(self, parent=None):
-        '''
-            On instantiation populate the model with data
-
-            Args:
-                stock_source (StockSource)  The source of our data
-        '''
         super(Stock, self).__init__(parent)
 
     def load(self, stock_source):
@@ -48,7 +43,7 @@ class Stock(QObject):
             Load the data into the model
 
             Args:
-                stock_source (StockSource)  The source of our data
+                stock_source (StockSource): The source of our data
 
         '''
         self.stockData = {}
@@ -61,12 +56,10 @@ class Stock(QObject):
             date_string = row["date"]
             # create and insert a stock node if it doesnt exist
             if label not in self.stockData:
-                self.insertStockNode(
-                    self.createStockNode(label)
-                )
+                self.insertStockNode(self.createStockNode(label))
             # cast the string values
             for field in valueFields:
-                if row[field] == '':
+                if not row[field]:
                     row[field] = 0.0
                 else:
                     row[field] = float(row[field])
@@ -74,13 +67,7 @@ class Stock(QObject):
             # update the node
             self.stockData[label].addData(
                 date_string,
-                StockValue(
-                    row["open"],
-                    row["high"],
-                    row["low"],
-                    row["close"]
-                )
-            )
+                StockValue(row["open"], row["high"], row["low"], row["close"]))
             # track the global bounds
             date = datetime.strptime(date_string, Constants.PY_DATE_FORMAT)
             if self.earliestDate is None or date < self.earliestDate:
@@ -96,47 +83,50 @@ class Stock(QObject):
                 self.currentLoadLabel.emit(label)
                 self.currentLoadBytes.emit(self.loadedBytes)
 
-    def createStockNode(self, label):
+    def createStockNode(self, label: str):
         '''
             Given a label create a node
 
             Args:
-                label   str     The node label
+                label (str): The node label
 
             Returns:
-                StockNode
+                (StockNode)
         '''
         return StockNode(label)
 
     def insertStockNode(self, node):
         '''
-            Insert the nodes
+            Insert the node
 
             Args:
-                node    StockNode   The node to insert
+                node (StockNode): The node to insert
         '''
         label = node.getLabel()
         if label in self.stockData:
             raise ValueError(label + " already exists")
         self.stockData[label] = node
 
-    def findByName(self, label):
+    def findByName(self, label: str):
         '''
             Return a single stock node by name
 
+            Args:
+                label (str): stock name
+
             Returns:
-                StockNode
+                (StockNode)
         '''
         if label in self.stockData:
             return self.stockData[label]
         return None
 
-    def findByDate(self, date):
+    def findByDate(self, date: str):
         '''
             Return all stock nodes for a given date
 
             Returns:
-                List<StockNode>
+                (List[StockNode])
         '''
         raise RuntimeError("Not implemented")
 
@@ -145,7 +135,7 @@ class Stock(QObject):
             Return all the stock nodes
 
             Returns:
-                dict<string, StockNode>
+                (dict{string, StockNode})
         '''
         return self.stockData
 
@@ -154,7 +144,7 @@ class Stock(QObject):
             Return all stock labels
 
             Returns:
-                list<string>
+                (List[str])
         '''
         return self.stockData.keys()
 
@@ -163,7 +153,7 @@ class Stock(QObject):
             Returns a datetime representing the lower bound
 
             Returns:
-                datetime
+                (datetime)
         '''
         return self.earliestDate
 
@@ -172,7 +162,7 @@ class Stock(QObject):
             Returns a datettime representing the upper bound
 
             Returns:
-                datetime
+                (datetime)
         '''
         return self.latestDate
 
@@ -181,7 +171,7 @@ class Stock(QObject):
             Returns date as a string (yyyy-mm-dd)
 
             Returns:
-                string
+                (str)
         '''
         return self.earliestDate.strftime(Constants.PY_DATE_FORMAT)
 
@@ -189,7 +179,8 @@ class Stock(QObject):
         '''
             Returns date as a string (yyyy-mm-dd)
 
-            Returns: string
+            Returns:
+                (str)
         '''
         return self.latestDate.strftime(Constants.PY_DATE_FORMAT)
 
@@ -198,7 +189,7 @@ class Stock(QObject):
             Get the lowest value found
 
             Return:
-                float
+                (float)
         '''
         return self.lowestValue
 
@@ -207,6 +198,6 @@ class Stock(QObject):
             Get the highest value found
 
             Return:
-                float
+                (float)
         '''
         return self.highestValue

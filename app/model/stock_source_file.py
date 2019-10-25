@@ -1,8 +1,6 @@
 '''
-    Name:
-        Stock Source File Handler
-    Description:
-        A Stock Source File Handler
+    A Stock Source File Handler
+
     Author:
         Matthew Barber <mfmbarber@gmail.com>
 '''
@@ -14,16 +12,13 @@ from .stock_source import StockSource
 class StockSourceFile(StockSource):
     '''
         Stock source file reader
+
+        Args:
+            location (str): The location of the data
     '''
     handler = None
 
-    def __init__(self, location):
-        '''
-            Instantiate the source
-
-            Args:
-                location (string) The location of the data
-        '''
+    def __init__(self, location: str):
         super().__init__(location)
         if not os.path.exists(location):
             raise ValueError("%s doesn't exist" % location)
@@ -36,7 +31,7 @@ class StockSourceFile(StockSource):
             Generate a new line from the resource
 
             Yields:
-                list
+                (str)
         '''
         if self.handler is None:
             raise RuntimeError("Resource not open")
@@ -50,7 +45,7 @@ class StockSourceFile(StockSource):
             Get the current line size
 
             Returns:
-                int
+                (int)
         '''
         return self.currentLineSize
 
@@ -59,7 +54,7 @@ class StockSourceFile(StockSource):
             Get the total resource size (bytes)
 
             Returns:
-                int
+                (int)
         '''
         return self.size
 
@@ -71,14 +66,10 @@ class StockSourceFile(StockSource):
             self.handler.close()
         try:
             # TODO: validate source file mime type
-            self.handler = csv.reader(
-                open(
-                    file=self.location,
-                    mode='r',
-                    encoding='utf-8'
-                ),
-                delimiter=',',
-                quotechar='"'
-            )
+            self.handler = csv.reader(open(file=self.location,
+                                           mode='r',
+                                           encoding='utf-8'),
+                                      delimiter=',',
+                                      quotechar='"')
         except Exception:
             raise ValueError("Cannot open file: ", self.location)

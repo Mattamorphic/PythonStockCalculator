@@ -1,8 +1,7 @@
 '''
-    Name:
-        Analysis Controller
-    Description:
-        Controller for the analysis widget
+    Analysis Controller
+    Controller for the analysis widget
+
     Author:
         Matthew Barber <mfmbarber@gmail.com>
 '''
@@ -17,23 +16,20 @@ class AnalysisController(QWidget):
     '''
         Analysis Controller
     '''
-
-    def __init__(
-        self,
-        fromDateString,
-        toDateString,
-        stockNodes=[],
-        selectedStock=None,
-        parent=None
-    ):
+    def __init__(self,
+                 fromDateString: str,
+                 toDateString: str,
+                 stockNodes=[],
+                 selectedStock=None,
+                 parent=None):
         '''
             Initialize the controller and set the instance variables
 
             Args:
-                fromDateString  string      The from (buy) date
-                toDateString    string      The to (sell) date
-                stockNodes      StockNode[] All of the selected nodes
-                selectedStock   StockNode   The node we are analysing
+                fromDateString  (str)               The from (buy) date
+                toDateString    (str)               The to (sell) date
+                stockNodes      (List[StockNode])   All of the selected nodes
+                selectedStock   (StockNode)         The node we are analysing
         '''
         super().__init__(parent)
         self.fromDate = fromDateString
@@ -47,28 +43,20 @@ class AnalysisController(QWidget):
             Initializes the UI
         '''
         self.stockSelectorComponent = StockSelector(
-            [node.getLabel() for node in self.stockNodes]
-        )
+            [node.getLabel() for node in self.stockNodes])
         self.stockSelectorComponent.onChange.connect(
-            self.updateSelectedStockByLabel
-        )
+            self.updateSelectedStockByLabel)
         self.overviewComponent = AnalysisOverviewLabel(
             AnalysisOverviewLabel.createOverviewString(
-                self.fromDate,
-                self.toDate,
-                self.selectedStock.getLabel() if self.selectedStock is not None else None
-            )
-        )
+                self.fromDate, self.toDate,
+                self.selectedStock.getLabel()
+                if self.selectedStock is not None else None))
 
         self.averageValues = AverageStockValueData(self.getAverageValues())
 
         self.setLayout(
-            AnalysisLayout(
-                self.stockSelectorComponent,
-                self.overviewComponent,
-                self.averageValues
-            )
-        )
+            AnalysisLayout(self.stockSelectorComponent, self.overviewComponent,
+                           self.averageValues))
 
     def getAverageValues(self):
         '''
@@ -76,14 +64,11 @@ class AnalysisController(QWidget):
             or an empty value
 
             Returns:
-                StockValue
+                (StockValue)
         '''
         if self.selectedStock is None:
             return AverageStockValueData.createEmptyValue()
-        return self.selectedStock.getAverageValues(
-            self.fromDate,
-            self.toDate
-        )
+        return self.selectedStock.getAverageValues(self.fromDate, self.toDate)
 
     def updateAverageValues(self):
         '''
@@ -96,50 +81,46 @@ class AnalysisController(QWidget):
             Updated the current stock node being analysed
 
             Args:
-                node    StockNode   The node being analysed
+                node (StockNode): The node being analysed
         '''
         self.selectedStock = node
         self.overviewComponent.update(
             self.overviewComponent.createOverviewString(
-                self.fromDate,
-                self.toDate,
-                self.selectedStock.getLabel() if self.selectedStock else None
-            )
-        )
+                self.fromDate, self.toDate,
+                self.selectedStock.getLabel() if self.selectedStock else None))
         self.updateAverageValues()
 
-    def updateSelectedStockByLabel(self, label):
+    def updateSelectedStockByLabel(self, label: str):
         '''
             Given a label, find this in all our potentoal nodes, and update
             the selectedStock instance variable
 
             Args:
-                label   string  The label for a stock
+                label (str): The label for a stock
         '''
         # next returns the next item in an interator, our first occurance.
         node = next(
             (node for node in self.stockNodes if node.getLabel() == label),
-            None
-        )
+            None)
         if node is not None:
             self.updateSelectedStock(node)
 
-    def updateFromDate(self, fromDate):
+    def updateFromDate(self, fromDate: str):
         '''
             Update the fromDate in our analysis
 
             Args:
-                fromDate    string  The from (buy) date
+                fromDate (str): The from (buy) date
         '''
         self.fromDate = fromDate
         self.updateAverageValues()
 
-    def updateToDate(self, toDate):
+    def updateToDate(self, toDate: str):
         '''
             Update the toDate in our analysis
 
             Args:
-                toDate    string  The to (sell) date
+                toDate (str): The to (sell) date
         '''
         self.toDate = toDate
         self.updateAverageValues()
@@ -149,14 +130,11 @@ class AnalysisController(QWidget):
             Update all the stock nodes that we can analyse
 
             Args:
-                stockNodes  StockNodes[]    The potential stock nodes to analyse
+                stockNodes (List[StockNodes]): The potential stock nodes to analyse
         '''
         self.stockNodes = stockNodes
         self.stockSelectorComponent.updateValues(
-            [
-                node.getLabel() for node in self.stockNodes
-            ]
-        )
+            [node.getLabel() for node in self.stockNodes])
         if stockNodes:
             self.updateSelectedStock(self.stockNodes[0])
         else:

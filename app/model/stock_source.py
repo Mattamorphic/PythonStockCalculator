@@ -1,8 +1,7 @@
 '''
-    Name:
-        Stock Source
-    Description:
-        Parent class for all stock sources
+    Stock Source
+    Parent class for all stock sources
+
     Author:
         Matthew Barber <mfmbarber@gmail.com>
 '''
@@ -11,6 +10,9 @@
 class StockSource:
     '''
         Base class for the stock data sources
+
+        Args:
+            location (mixed):   The source location
     '''
     isReady = False
 
@@ -22,7 +24,7 @@ class StockSource:
             Generate a new line from the source
 
             Yields:
-                string
+                (str)
         '''
         raise Exception("Only implemented in child classes")
 
@@ -31,13 +33,11 @@ class StockSource:
             Gen a row of data represented as headers and values
 
             Returns:
-                dict<string, mixed>
+                (dict{str: mixed})
         '''
         if not self.isReady:
             raise RuntimeError("Can't load, no source")
-        headers = [
-            header.lower() for header in next(self.genLine())
-        ]
+        headers = [header.lower() for header in next(self.genLine())]
         for line in self.genLine():
             yield dict(zip(headers, line))
 
@@ -46,7 +46,7 @@ class StockSource:
             Getter for line size, should be overridden by child classes
 
             Returns:
-                int
+                (int)
         '''
         return 0
 
@@ -55,6 +55,6 @@ class StockSource:
             Getter for resource size, should be overridden by child classes
 
             Returns:
-                int
+                (int)
         '''
         return 0

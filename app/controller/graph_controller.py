@@ -1,15 +1,11 @@
 '''
-    Name:
-        Graph Controller
-    Description:
-        Controller for the returned graph widget
+    Graph Controller
+    Controller for the returned graph widget
+
     Author:
         Matthew Barber <mfmbarber@gmail.com>
 '''
-from app.view.components.graph import (
-    GraphOptions,
-    StockLineGraph
-)
+from app.view.components.graph import (GraphOptions, StockLineGraph)
 from app.view.components.labels import GraphLabel
 from app.view.layouts import GraphLayout
 from PyQt5.QtCore import pyqtSignal
@@ -38,15 +34,10 @@ class GraphController(QWidget):
         self.graphLabel = GraphLabel(self.selectedOption)
         self.graphOptions = GraphOptions(self.selectedOption)
         self.graphOptions.onChecked.connect(
-            lambda option: self.update.emit(option)
-        )
+            lambda option: self.update.emit(option))
         self.setLayout(
-            GraphLayout(
-                self.graphOptions,
-                self.graphLabel,
-                self.graphComponent
-            )
-        )
+            GraphLayout(self.graphOptions, self.graphLabel,
+                        self.graphComponent))
 
     def clear(self):
         '''
@@ -54,15 +45,15 @@ class GraphController(QWidget):
         '''
         self.graphComponent.initGraph()
 
-    def plotStock(self, label, x, y, low, high):
+    def plotStock(self, label: str, x, y, low: float, high: float):
         '''
             Plot a stock to the graph
 
             Args:
-                label   string      The label for the stock
-                x       int[]       Each point represents a day
-                y       float[]     Each entry represents the value of the stock
-                low     float       The low for this stock entry
-                high    float       The high for this stock entry
+                label   (string)     : The label for the stock
+                x       (List[int])  : Each point represents a day
+                y       (List[float]): Each entry represents the value of the stock
+                low     (float)      : The low for this stock entry
+                high    (float)      : The high for this stock entry
         '''
         self.graphComponent.plotStock(label, x, y, low, high)

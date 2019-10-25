@@ -1,8 +1,7 @@
 '''
-    Name:
-        Amount Controller
-    Description:
-        Controller for the return amount widget
+    Amount Controller
+    Controller for the return amount widget
+
     Author:
         Matthew Barber <mfmbarber@gmail.com>
 '''
@@ -16,25 +15,16 @@ from PyQt5.QtWidgets import QWidget
 class AmountController(QWidget):
     '''
         Amount controller handles delivering and monitoring the widgets related to the stock amount
+
+        Args
+            amount (int):  The initial amount,
     '''
 
     update = pyqtSignal(int)
 
-    def __init__(self, amount):
-        '''
-            Initialize the amount controller
-
-            Args
-                amount  int     The initial amount
-        '''
+    def __init__(self, amount: int):
         super().__init__()
         amountComponent = Amount(amount)
-        amountComponent.onChange.connect(
-            lambda amount: self.update.emit(
-                amount if amount is not None or '' else 0
-            )
-        )
-        self.setLayout(AmountLayout(
-            AmountLabel(),
-            amountComponent
-        ))
+        amountComponent.onChange.connect(lambda amount: self.update.emit(
+            amount if amount is not None or '' else 0))
+        self.setLayout(AmountLayout(AmountLabel(), amountComponent))

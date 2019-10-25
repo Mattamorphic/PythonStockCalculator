@@ -1,8 +1,7 @@
 '''
-    Name:
-        Stock Node Data Module
-    Description:
-        A module holding classes for dealing with stock nodes
+    Stock Node Data Module
+    A module holding classes for dealing with stock nodes
+
     Author:
         Matthew Barber <mfmbarber@gmail.com>
 '''
@@ -23,29 +22,29 @@ class StockNode:
             Return the label for the stock
 
             Returns:
-                string
+                str
         '''
         return self.label
 
-    def addData(self, date, stock_value):
+    def addData(self, date: str, stock_value):
         '''
             Add data to the stock node
 
             Args:
-                date        (string)        The date for the data
-                stock_value (StockValue)    The StockValue for the data
+                date        (str):          The date for the data
+                stock_value (StockValue):   The StockValue for the data
         '''
         if date not in self.data:
             self.data[date] = stock_value
         else:
             raise ValueError("No two entries can exist for the same date")
 
-    def getValueForDate(self, date):
+    def getValueForDate(self, date: str):
         '''
             Return a stock value for a specific date
 
             Args:
-                date    (string)    The date to return the value for
+                date (str): The date to return the value for
 
             Returns:
                 StockValue || None
@@ -54,13 +53,13 @@ class StockNode:
             return self.data[date]
         return None
 
-    def getAverageValues(self, fromDate, toDate):
+    def getAverageValues(self, fromDate: str, toDate: str):
         '''
             Calculate the average values between two dates
 
             Args:
-                fromDate    (string)    The from (buy) date
-                toDate      (string)    The to (sell) date
+                fromDate    (str):  The from (buy) date
+                toDate      (str):  The to (sell) date
 
             Returns:
                 StockValue
@@ -76,7 +75,8 @@ class StockNode:
         close = 0.0
 
         while currentDate < endDate:
-            node = self.getValueForDate(currentDate.strftime(Constants.PY_DATE_FORMAT))
+            node = self.getValueForDate(
+                currentDate.strftime(Constants.PY_DATE_FORMAT))
             if node is not None:
                 totalCount += 1
                 open += node.getOpeningValue()
@@ -84,12 +84,10 @@ class StockNode:
                 low += node.getLowValue()
                 close = node.getCloseValue()
             currentDate += delta
-        return StockValue(
-            round(open / totalCount, 2),
-            round(high / totalCount, 2),
-            round(low / totalCount, 2),
-            round(close / totalCount, 2)
-        )
+        return StockValue(round(open / totalCount, 2),
+                          round(high / totalCount, 2),
+                          round(low / totalCount, 2),
+                          round(close / totalCount, 2))
 
     def getProfitValue(self, amount, fromDate, toDate):
         buyValue = self.getValueForDate(fromDate)
@@ -97,27 +95,20 @@ class StockNode:
         if buyValue is None or sellValue is None:
             return None
 
-        return StockProfit(
-            amount,
-            buyValue,
-            sellValue
-        )
+        return StockProfit(amount, buyValue, sellValue)
 
 
 class StockValue:
     '''
         Stock value represents the value for a stock on a given day
-    '''
-    def __init__(self, open, high, low, close):
-        '''
-            Initialize a stock value object
 
-            Args:
-                open    (float)     The opening price on the given date
-                high    (float)     The high price on the given date
-                low     (float)     The low price on the given date
-                close   (float)     Tthe close price on thte given date
-        '''
+        Args:
+            open    (float): The opening price on the given date
+            high    (float): The high price on the given date
+            low     (float): The low price on the given date
+            close   (float): The close price on the given date
+    '''
+    def __init__(self, open: float, high: float, low: float, close: float):
         self.open = open
         self.high = high
         self.low = low
@@ -128,7 +119,7 @@ class StockValue:
             Getter for close value
 
             Returns:
-                float
+                (float)
         '''
         return self.close
 
@@ -137,7 +128,7 @@ class StockValue:
             Getter for high value
 
             Returns:
-                float
+                (float)
         '''
         return self.high
 
@@ -146,7 +137,7 @@ class StockValue:
             Getter for low value
 
             Returns:
-                float
+                (float)
         '''
         return self.low
 
@@ -155,7 +146,7 @@ class StockValue:
             Getter for opening value
 
             Returns:
-                float
+                (float)
         '''
         return self.open
 
@@ -164,7 +155,7 @@ class StockValue:
             Determine the difference between the close and open
 
             Returns:
-                float
+                (float)
         '''
         return self.close - self.open
 
@@ -173,7 +164,7 @@ class StockValue:
             Determine the difference between the high and low
 
             Returns:
-                float
+                (float)
         '''
         return self.high - self.low
 
@@ -193,16 +184,17 @@ def profitPreNoneCheck(func):
             Decorator function (with instance)
 
             Args:
-                self        self    A class instance
-                *args       args    Unnamed args
-                **kwargs    kwargs  Keyed args
+                self        (self):     A class instance
+                *args       (args):     Unnamed args
+                **kwargs    (kwargs):   Keyed args
 
             Returns:
-                float
+                (float)
         '''
         if self.buy is None or self.sell is None:
             return 0.0
         return func(self, *args, **kwargs)
+
     return decorator
 
 
@@ -210,14 +202,14 @@ class StockProfit:
     '''
         Stock profit class, used for profit related calculations
     '''
-    def __init__(self, amount, buyValue=None, sellValue=None):
+    def __init__(self, amount: int, buyValue=None, sellValue=None):
         '''
             Initialize the StockProfit class
 
             Args:
-                amount      (int)           The amount of stock
-                buyValue    (StockValue)    The stock value on buy date
-                sellValue   (StockValue)    The stock value on sell date
+                amount      (int):           The amount of stock
+                buyValue    (StockValue):    The stock value on buy date
+                sellValue   (StockValue):    The stock value on sell date
         '''
         self.multiplier = amount
         self.buy = buyValue
@@ -229,13 +221,10 @@ class StockProfit:
             Returns the lowest profit
 
             Returns:
-                float
+                (float)
         '''
-        return round(
-            (self.sell.getLowValue() - self.buy.getHighValue())
-            * (self.multiplier / 1.0),
-            2
-        )
+        return round((self.sell.getLowValue() - self.buy.getHighValue()) *
+                     (self.multiplier / 1.0), 2)
 
     @profitPreNoneCheck
     def getHighestMargin(self):
@@ -243,13 +232,10 @@ class StockProfit:
             Returns the highest profit
 
             Returns:
-                float
+                (float)
         '''
-        return round(
-            (self.sell.getHighValue() - self.buy.getLowValue())
-            * (self.multiplier / 1.0),
-            2
-        )
+        return round((self.sell.getHighValue() - self.buy.getLowValue()) *
+                     (self.multiplier / 1.0), 2)
 
     @profitPreNoneCheck
     def getLowestBuyPrice(self):
@@ -257,7 +243,7 @@ class StockProfit:
             Returns the lowest buy price
 
             Returns:
-                float
+                (float)
         '''
         return round(self.buy.getLowValue() * self.multiplier, 2)
 
@@ -267,7 +253,7 @@ class StockProfit:
             Returns the highest buy price
 
             Returns:
-                float
+                (float)
         '''
         return round(self.buy.getHighValue() * self.multiplier, 2)
 
@@ -277,7 +263,7 @@ class StockProfit:
             Returns the lowest sell price
 
             Returns:
-                float
+                (float)
         '''
         return round(self.sell.getLowValue() * self.multiplier, 2)
 
@@ -287,6 +273,6 @@ class StockProfit:
             Returns the highest sell price
 
             Returns:
-                float
+                (float)
         '''
         return round(self.sell.getHighValue() * self.multiplier, 2)

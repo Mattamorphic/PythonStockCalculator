@@ -1,17 +1,12 @@
 '''
-    Name:
-        Stock Controller
-    Description:
-        Controller for the stock widget
+    Stock Controller
+    Controller for the stock widget
+
     Author:
         Matthew Barber <mfmbarber@gmail.com>
 '''
 from app.view.components.labels import StockLabel
-from app.view.components.stock import (
-    StockClear,
-    StockFilter,
-    StockList
-)
+from app.view.components.stock import (StockClear, StockFilter, StockList)
 from app.view.layouts import StockLayout
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtWidgets import QWidget
@@ -30,7 +25,7 @@ class StockController(QWidget):
             Initalize the stock controller
 
             Args:
-                stockLabels  str[]   String array of stock labels
+                stockLabel (List[str]): String array of stock labels
         '''
         super().__init__()
         self.stockLabels = stockLabels
@@ -45,18 +40,16 @@ class StockController(QWidget):
         self.labelComponent = StockLabel(self.selectedStock)
         self.clearComponent = StockClear()
         self.clearComponent.clicked.connect(self.clearSelected)
-        self.stockListComponent = StockList(self.stockLabels, self.selectedStock)
+        self.stockListComponent = StockList(self.stockLabels,
+                                            self.selectedStock)
         self.stockListComponent.onChange.connect(self.updateStock)
         self.stockFilterComponent = StockFilter(self.stockFilter)
         self.stockFilterComponent.onChange.connect(self.filterStock)
         self.stockFilterComponent.onError.connect(self.labelComponent.error)
 
-        layout = StockLayout(
-            self.labelComponent,
-            self.clearComponent,
-            self.stockFilterComponent,
-            self.stockListComponent
-        )
+        layout = StockLayout(self.labelComponent, self.clearComponent,
+                             self.stockFilterComponent,
+                             self.stockListComponent)
         self.setLayout(layout)
 
     def clearSelected(self):
@@ -72,28 +65,24 @@ class StockController(QWidget):
             Update the selected stock
 
             Args:
-                stock  str[]     Selected stock
+                stock (List[str]): Selected stock
         '''
         self.labelComponent.update(stock)
         self.selectedStock = stock
         self.update.emit(stock)
 
-    def filterStock(self, value, clearSelected=False):
+    def filterStock(self, value: str, clearSelected=False):
         '''
             Filter the stock based on the value
+
+            Args:
+                value (str): Filter value
         '''
         self.stockFilter = value.upper()
         # Here we are updating the stock label list filtering labels based
         # on our filter value, we filter out any selected stock labels
         self.stockListComponent.updateValues(
             list(
-                filter(
-                    (
-                        lambda label:
-                            (self.stockFilter in label and label not in self.selectedStock)
-                    ),
-                    self.stockLabels
-                )
-            ),
-            clearSelected
-        )
+                filter((lambda label: (self.stockFilter in label and label
+                                       not in self.selectedStock)),
+                       self.stockLabels)), clearSelected)

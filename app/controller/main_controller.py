@@ -1,8 +1,7 @@
 '''
-    Name:
-        Main Controller
-    Description:
-        Controller for the main controls / functions
+    Main Controller
+    Controller for the main controls / functions
+
     Author:
         Matthew Barber <mfmbarber@gmail.com>
 '''
@@ -14,17 +13,16 @@ from .graph_controller import GraphController
 from .profit_controller import ProfitController
 from app.lib.constants import Constants
 from .stock_controller import StockController
-from PyQt5.QtWidgets import QWidget
+from PyQt5.QtWidgets import QHBoxLayout, QTabWidget, QVBoxLayout, QWidget
 
 
 class MainController(QWidget):
-
     '''
         MainController serves the initial layout and adds the controllers to the interface
     '''
     def __init__(self, model):
         '''
-            Upon instaantiation initialize the state
+            Upon instantiation initialize the state
                 setup the controllers and init the UI
         '''
         super().__init__()
@@ -42,31 +40,24 @@ class MainController(QWidget):
         '''
         self.amountController = AmountController(self.state.amount)
         self.amountController.update.connect(self.updateAmountState)
-        self.analysisController = AnalysisController(
-            self.state.fromDate,
-            self.state.toDate
-        )
-        self.profitController = ProfitController(
-            self.state.amount,
-            self.state.fromDate,
-            self.state.toDate
-        )
+        self.analysisController = AnalysisController(self.state.fromDate,
+                                                     self.state.toDate)
+        self.profitController = ProfitController(self.state.amount,
+                                                 self.state.fromDate,
+                                                 self.state.toDate)
         self.fromCalendarController = CalendarController(
-            self.state.fromDate,
-            self.state.fromDate,
-            self.state.toDate,
-            "Buy date"
-        )
+            self.state.fromDate, self.state.fromDate, self.state.toDate,
+            "Buy date")
         self.fromCalendarController.update.connect(self.updateFromDateState)
-        self.toCalendarController = CalendarController(
-            self.state.toDate,
-            self.state.fromDate,
-            self.state.toDate,
-            "Sell date"
-        )
+        self.toCalendarController = CalendarController(self.state.toDate,
+                                                       self.state.fromDate,
+                                                       self.state.toDate,
+                                                       "Sell date")
         self.toCalendarController.update.connect(self.updateToDateState)
-        self.selectedStockController = StockController(self.model.selectAllNames())
-        self.selectedStockController.update.connect(self.updateSelectedStockState)
+        self.selectedStockController = StockController(
+            self.model.selectAllNames())
+        self.selectedStockController.update.connect(
+            self.updateSelectedStockState)
         self.graphController = GraphController(self.state.option)
         self.graphController.update.connect(self.updateGraphData)
 
@@ -91,23 +82,23 @@ class MainController(QWidget):
 
         layout.addWidget(tabs)
 
-    def updateAmountState(self, number):
+    def updateAmountState(self, number: int):
         '''
             State management for the amount, on change reprocess the data
 
             Args:
-                number  int     Amount
+                number (int): Amount
         '''
         self.state.amount = number
         self.profitController.updateMultiplier(number)
         self.process()
 
-    def updateFromDateState(self, dateString):
+    def updateFromDateState(self, dateString: str):
         '''
             State management for the from date, on change reprocess the data
 
             Args:
-                dateString  string     Date in yyyy-mm-dd format
+                dateString (str): Date in yyyy-mm-dd format
         '''
         self.state.fromDate = dateString
         self.analysisController.updateFromDate(dateString)
@@ -115,12 +106,12 @@ class MainController(QWidget):
         self.toCalendarController.setEarliestDate(dateString)
         self.process()
 
-    def updateToDateState(self, dateString):
+    def updateToDateState(self, dateString: str):
         '''
             State management for the to date, on change reprocess the data
 
             Args:
-                dateString  string     Date in yyyy-mm-dd format
+                dateString (str): Date in yyyy-mm-dd format
         '''
         self.state.toDate = dateString
         self.analysisController.updateToDate(dateString)
@@ -128,22 +119,22 @@ class MainController(QWidget):
         self.fromCalendarController.setLatestDate(dateString)
         self.process()
 
-    def updateGraphData(self, option):
+    def updateGraphData(self, option: str):
         '''
             Update the option
 
             Args:
-                option  string  Check Constants.GraphOptions for enumerable
+                option (str):  Check Constants.GraphOptions for enumerable
         '''
         self.state.option = option
         self.process()
 
-    def updateSelectedStockState(self, stock):
+    def updateSelectedStockState(self, stock: str):
         '''
             State management for the selected sock, on change reprocess the data
 
             Args:
-                stock  string     stock label
+                stock (str): stock label
         '''
         self.state.selectedStock = stock
         self.process()
@@ -170,13 +161,15 @@ class MainController(QWidget):
             Process a stock node
 
             Args:
-                node    StockNode   A node represnting a stock entry
+                node (StockNode): A node represnting a stock entry
         '''
-        data = []  # The data
-        dates = []  # Dates we have data for
+        data = []    # The data
+        dates = []    # Dates we have data for
         # Create date boundary objects we can iterate with
-        currentDate = datetime.strptime(self.state.fromDate, Constants.PY_DATE_FORMAT)
-        endDate = datetime.strptime(self.state.toDate, Constants.PY_DATE_FORMAT)
+        currentDate = datetime.strptime(self.state.fromDate,
+                                        Constants.PY_DATE_FORMAT)
+        endDate = datetime.strptime(self.state.toDate,
+                                    Constants.PY_DATE_FORMAT)
 
         # The low/high for that stock
         low = None
@@ -187,7 +180,8 @@ class MainController(QWidget):
             # We don't have data at weekdays, lets skip,
             if currentDate.weekday() < 5:
                 # Try and fetch the StockValue object for the currentDate
-                nodeValue = node.getValueForDate(currentDate.strftime(Constants.PY_DATE_FORMAT))
+                nodeValue = node.getValueForDate(
+                    currentDate.strftime(Constants.PY_DATE_FORMAT))
                 # If we have a value, process, and append with the date
                 if nodeValue is not None:
                     if self.state.option == Constants.GraphOptions.LOW:
@@ -210,13 +204,11 @@ class MainController(QWidget):
             # move the currentData by our 1 day delta
             currentDate += delta
 
-        self.graphController.plotStock(
-            label=node.getLabel(),
-            x=dates,
-            y=data,
-            low=low,
-            high=high
-        )
+        self.graphController.plotStock(label=node.getLabel(),
+                                       x=dates,
+                                       y=data,
+                                       low=low,
+                                       high=high)
 
 
 class MainState:

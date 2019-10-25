@@ -1,8 +1,7 @@
 '''
-    Name:
-        Loading Controller
-    Description:
-        Controller for the loading widget widget
+    Loading Controller
+    Controller for the loading widget widget
+
     Author:
         Matthew Barber <mfmbarber@gmail.com>
 '''
@@ -29,28 +28,23 @@ class LoadingController(QWidget):
         '''
         self.label = CurrentLoadingLabel()
         self.progress = LoadingProgress()
-        self.setLayout(
-            LoadingLayout(
-                LoadingLabel(),
-                self.label,
-                self.progress
-            )
-        )
+        self.setLayout(LoadingLayout(LoadingLabel(), self.label,
+                                     self.progress))
 
-    def updateProgress(self, value):
+    def updateProgress(self, value: str):
         '''
             A setter function that exposes the loading label
 
             Args:
-                value   string  The new value
+                value (str): The new value
         '''
         self.label.update(value)
 
-    def updateProgressBar(self, value):
+    def updateProgressBar(self, value: float):
         '''
             A setter functiton for updating the progress bar
 
             Args:
-                value  float  The progress percentage
+                value (float): The progress percentage
         '''
         self.progress.update(value)

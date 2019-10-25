@@ -1,8 +1,7 @@
 '''
-    Name:
-        App
-    Description:
-        Core app container for the stock calculator
+    App
+    Core app container for the stock calculator
+
     Author:
         Matthew Barber <mfmbarber@gmail.com>
 '''
@@ -11,51 +10,39 @@ from app.controller.loading_controller import LoadingController
 from app.controller.main_controller import MainController
 from app.lib.stock_worker import StockWorker
 
-from PyQt5.QtWidgets import (
-    QDesktopWidget,
-    QMainWindow
-)
+from PyQt5.QtWidgets import (QDesktopWidget, QMainWindow)
 
 
 class App(QMainWindow):
     '''
         Main window for the stock profit app
     '''
-
     def __init__(self, source):
-        '''
-            Stock Application
-        '''
         super().__init__()
         self.resourceSize = source.getResourceSize()
         self.initUI(source)
 
-    def updateProgressPercentage(self, bytes):
+    def updateProgressPercentage(self, bytes: int):
         '''
             Update the loading percentage based on the current bytes
 
             Args:
-                bytes   int     The byte loaded
+                bytes (int): The byte loaded
         '''
         self.loadingController.updateProgressBar(
-            (bytes / self.resourceSize) * 100
-        )
+            (bytes / self.resourceSize) * 100)
 
     def loadModel(self, source):
         '''
             Load takes in a model source, and uses a QThread to load this
 
             Args:
-                source  StockSource     A source for our stock model
+                source (StockSource): A source for our stock model
         '''
         worker = StockWorker(self, source)
         worker.result.connect(self.initMain)
-        worker.progressLabel.connect(
-            self.loadingController.updateProgress
-        )
-        worker.progressBytes.connect(
-            self.updateProgressPercentage
-        )
+        worker.progressLabel.connect(self.loadingController.updateProgress)
+        worker.progressBytes.connect(self.updateProgressPercentage)
         worker.start()
 
     def stockUpdate(self):
@@ -88,7 +75,7 @@ class App(QMainWindow):
             Initializes the main  controller and attaches the widget (as a view)
 
             Args:
-                model   Stock   The stock model to attach to the main controller
+                model (Stock): The stock model to attach to the main controller
         '''
         self.updateStatusBar("Ready...")
         self.mainController = MainController(stock)
