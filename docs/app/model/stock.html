@@ -1,0 +1,920 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.1" />
+<title>app.model.stock API documentation</title>
+<meta name="description" content="Stock Model
+Model for interacting with stock …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>app.model.stock</code></h1>
+</header>
+<section id="section-intro">
+<p>Stock Model
+Model for interacting with stock</p>
+<h2 id="author">Author</h2>
+<p>Matthew Barber <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#102;&#109;&#98;&#97;&#114;&#98;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#109;&#102;&#109;&#98;&#97;&#114;&#98;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#39;&#39;&#39;
+    Stock Model
+    Model for interacting with stock
+
+    Author:
+        Matthew Barber &lt;mfmbarber@gmail.com&gt;
+&#39;&#39;&#39;
+from datetime import datetime
+from app.lib.constants import Constants
+from PyQt5.QtCore import QObject, pyqtSignal
+from .stock_node import StockNode, StockValue
+
+
+class Stock(QObject):
+    &#39;&#39;&#39;
+        Stock model representing stock
+        Args:
+            stock_source (StockSource)  The source of our data
+    &#39;&#39;&#39;
+
+    # Model Data
+    stockData = {}
+
+    # The date bounds of our data
+    earliestDate = None
+    latestDate = None
+
+    # The value bounds of our data
+    highestValue = None
+    lowestValue = None
+
+    # Used during loading the data to provide progress
+    currentLabel = None
+    loadedBytes = 0
+    currentLoadLabel = pyqtSignal(str)
+    currentLoadBytes = pyqtSignal(int)
+
+    def __init__(self, parent=None):
+        super(Stock, self).__init__(parent)
+
+    def load(self, stock_source):
+        &#39;&#39;&#39;
+            Load the data into the model
+
+            Args:
+                stock_source (StockSource): The source of our data
+
+        &#39;&#39;&#39;
+        self.stockData = {}
+        # TODO : validate headers
+        valueFields = [&#34;open&#34;, &#34;high&#34;, &#34;low&#34;, &#34;close&#34;]
+        # genRow is a generator that will yield rows till it completes
+        for row in stock_source.genRow():
+            self.loadedBytes += stock_source.getLineSize()
+            label = row[&#34;name&#34;]
+            date_string = row[&#34;date&#34;]
+            # create and insert a stock node if it doesnt exist
+            if label not in self.stockData:
+                self.insertStockNode(self.createStockNode(label))
+            # cast the string values
+            for field in valueFields:
+                if not row[field]:
+                    row[field] = 0.0
+                else:
+                    row[field] = float(row[field])
+
+            # update the node
+            self.stockData[label].addData(
+                date_string,
+                StockValue(row[&#34;open&#34;], row[&#34;high&#34;], row[&#34;low&#34;], row[&#34;close&#34;]))
+            # track the global bounds
+            date = datetime.strptime(date_string, Constants.PY_DATE_FORMAT)
+            if self.earliestDate is None or date &lt; self.earliestDate:
+                self.earliestDate = date
+            elif self.latestDate is None or date &gt; self.latestDate:
+                self.latestDate = date
+            if self.highestValue is None or row[&#34;high&#34;] &gt; self.highestValue:
+                self.highestValue = row[&#34;high&#34;]
+            elif self.lowestValue is None or row[&#34;low&#34;] &lt; self.lowestValue:
+                self.lowestValue = row[&#34;low&#34;]
+            if self.currentLabel is None or label != self.currentLabel:
+                self.currentLabel = label
+                self.currentLoadLabel.emit(label)
+                self.currentLoadBytes.emit(self.loadedBytes)
+
+    def createStockNode(self, label: str):
+        &#39;&#39;&#39;
+            Given a label create a node
+
+            Args:
+                label (str): The node label
+
+            Returns:
+                (StockNode)
+        &#39;&#39;&#39;
+        return StockNode(label)
+
+    def insertStockNode(self, node):
+        &#39;&#39;&#39;
+            Insert the node
+
+            Args:
+                node (StockNode): The node to insert
+        &#39;&#39;&#39;
+        label = node.getLabel()
+        if label in self.stockData:
+            raise ValueError(label + &#34; already exists&#34;)
+        self.stockData[label] = node
+
+    def findByName(self, label: str):
+        &#39;&#39;&#39;
+            Return a single stock node by name
+
+            Args:
+                label (str): stock name
+
+            Returns:
+                (StockNode)
+        &#39;&#39;&#39;
+        if label in self.stockData:
+            return self.stockData[label]
+        return None
+
+    def findByDate(self, date: str):
+        &#39;&#39;&#39;
+            Return all stock nodes for a given date
+
+            Returns:
+                (List[StockNode])
+        &#39;&#39;&#39;
+        raise RuntimeError(&#34;Not implemented&#34;)
+
+    def selectAll(self):
+        &#39;&#39;&#39;
+            Return all the stock nodes
+
+            Returns:
+                (dict{string, StockNode})
+        &#39;&#39;&#39;
+        return self.stockData
+
+    def selectAllNames(self):
+        &#39;&#39;&#39;
+            Return all stock labels
+
+            Returns:
+                (List[str])
+        &#39;&#39;&#39;
+        return self.stockData.keys()
+
+    def getEarliestDate(self):
+        &#39;&#39;&#39;
+            Returns a datetime representing the lower bound
+
+            Returns:
+                (datetime)
+        &#39;&#39;&#39;
+        return self.earliestDate
+
+    def getLatestDate(self):
+        &#39;&#39;&#39;
+            Returns a datettime representing the upper bound
+
+            Returns:
+                (datetime)
+        &#39;&#39;&#39;
+        return self.latestDate
+
+    def getEarliestDateString(self):
+        &#39;&#39;&#39;
+            Returns date as a string (yyyy-mm-dd)
+
+            Returns:
+                (str)
+        &#39;&#39;&#39;
+        return self.earliestDate.strftime(Constants.PY_DATE_FORMAT)
+
+    def getLatestDateString(self):
+        &#39;&#39;&#39;
+            Returns date as a string (yyyy-mm-dd)
+
+            Returns:
+                (str)
+        &#39;&#39;&#39;
+        return self.latestDate.strftime(Constants.PY_DATE_FORMAT)
+
+    def getLowestValue(self):
+        &#39;&#39;&#39;
+            Get the lowest value found
+
+            Return:
+                (float)
+        &#39;&#39;&#39;
+        return self.lowestValue
+
+    def getHighestValue(self):
+        &#39;&#39;&#39;
+            Get the highest value found
+
+            Return:
+                (float)
+        &#39;&#39;&#39;
+        return self.highestValue</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="app.model.stock.Stock"><code class="flex name class">
+<span>class <span class="ident">Stock</span></span>
+<span>(</span><span>parent=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Stock model representing stock</p>
+<h2 id="args">Args</h2>
+<p>stock_source (StockSource)
+The source of our data</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Stock(QObject):
+    &#39;&#39;&#39;
+        Stock model representing stock
+        Args:
+            stock_source (StockSource)  The source of our data
+    &#39;&#39;&#39;
+
+    # Model Data
+    stockData = {}
+
+    # The date bounds of our data
+    earliestDate = None
+    latestDate = None
+
+    # The value bounds of our data
+    highestValue = None
+    lowestValue = None
+
+    # Used during loading the data to provide progress
+    currentLabel = None
+    loadedBytes = 0
+    currentLoadLabel = pyqtSignal(str)
+    currentLoadBytes = pyqtSignal(int)
+
+    def __init__(self, parent=None):
+        super(Stock, self).__init__(parent)
+
+    def load(self, stock_source):
+        &#39;&#39;&#39;
+            Load the data into the model
+
+            Args:
+                stock_source (StockSource): The source of our data
+
+        &#39;&#39;&#39;
+        self.stockData = {}
+        # TODO : validate headers
+        valueFields = [&#34;open&#34;, &#34;high&#34;, &#34;low&#34;, &#34;close&#34;]
+        # genRow is a generator that will yield rows till it completes
+        for row in stock_source.genRow():
+            self.loadedBytes += stock_source.getLineSize()
+            label = row[&#34;name&#34;]
+            date_string = row[&#34;date&#34;]
+            # create and insert a stock node if it doesnt exist
+            if label not in self.stockData:
+                self.insertStockNode(self.createStockNode(label))
+            # cast the string values
+            for field in valueFields:
+                if not row[field]:
+                    row[field] = 0.0
+                else:
+                    row[field] = float(row[field])
+
+            # update the node
+            self.stockData[label].addData(
+                date_string,
+                StockValue(row[&#34;open&#34;], row[&#34;high&#34;], row[&#34;low&#34;], row[&#34;close&#34;]))
+            # track the global bounds
+            date = datetime.strptime(date_string, Constants.PY_DATE_FORMAT)
+            if self.earliestDate is None or date &lt; self.earliestDate:
+                self.earliestDate = date
+            elif self.latestDate is None or date &gt; self.latestDate:
+                self.latestDate = date
+            if self.highestValue is None or row[&#34;high&#34;] &gt; self.highestValue:
+                self.highestValue = row[&#34;high&#34;]
+            elif self.lowestValue is None or row[&#34;low&#34;] &lt; self.lowestValue:
+                self.lowestValue = row[&#34;low&#34;]
+            if self.currentLabel is None or label != self.currentLabel:
+                self.currentLabel = label
+                self.currentLoadLabel.emit(label)
+                self.currentLoadBytes.emit(self.loadedBytes)
+
+    def createStockNode(self, label: str):
+        &#39;&#39;&#39;
+            Given a label create a node
+
+            Args:
+                label (str): The node label
+
+            Returns:
+                (StockNode)
+        &#39;&#39;&#39;
+        return StockNode(label)
+
+    def insertStockNode(self, node):
+        &#39;&#39;&#39;
+            Insert the node
+
+            Args:
+                node (StockNode): The node to insert
+        &#39;&#39;&#39;
+        label = node.getLabel()
+        if label in self.stockData:
+            raise ValueError(label + &#34; already exists&#34;)
+        self.stockData[label] = node
+
+    def findByName(self, label: str):
+        &#39;&#39;&#39;
+            Return a single stock node by name
+
+            Args:
+                label (str): stock name
+
+            Returns:
+                (StockNode)
+        &#39;&#39;&#39;
+        if label in self.stockData:
+            return self.stockData[label]
+        return None
+
+    def findByDate(self, date: str):
+        &#39;&#39;&#39;
+            Return all stock nodes for a given date
+
+            Returns:
+                (List[StockNode])
+        &#39;&#39;&#39;
+        raise RuntimeError(&#34;Not implemented&#34;)
+
+    def selectAll(self):
+        &#39;&#39;&#39;
+            Return all the stock nodes
+
+            Returns:
+                (dict{string, StockNode})
+        &#39;&#39;&#39;
+        return self.stockData
+
+    def selectAllNames(self):
+        &#39;&#39;&#39;
+            Return all stock labels
+
+            Returns:
+                (List[str])
+        &#39;&#39;&#39;
+        return self.stockData.keys()
+
+    def getEarliestDate(self):
+        &#39;&#39;&#39;
+            Returns a datetime representing the lower bound
+
+            Returns:
+                (datetime)
+        &#39;&#39;&#39;
+        return self.earliestDate
+
+    def getLatestDate(self):
+        &#39;&#39;&#39;
+            Returns a datettime representing the upper bound
+
+            Returns:
+                (datetime)
+        &#39;&#39;&#39;
+        return self.latestDate
+
+    def getEarliestDateString(self):
+        &#39;&#39;&#39;
+            Returns date as a string (yyyy-mm-dd)
+
+            Returns:
+                (str)
+        &#39;&#39;&#39;
+        return self.earliestDate.strftime(Constants.PY_DATE_FORMAT)
+
+    def getLatestDateString(self):
+        &#39;&#39;&#39;
+            Returns date as a string (yyyy-mm-dd)
+
+            Returns:
+                (str)
+        &#39;&#39;&#39;
+        return self.latestDate.strftime(Constants.PY_DATE_FORMAT)
+
+    def getLowestValue(self):
+        &#39;&#39;&#39;
+            Get the lowest value found
+
+            Return:
+                (float)
+        &#39;&#39;&#39;
+        return self.lowestValue
+
+    def getHighestValue(self):
+        &#39;&#39;&#39;
+            Get the highest value found
+
+            Return:
+                (float)
+        &#39;&#39;&#39;
+        return self.highestValue</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt5.QtCore.QObject</li>
+<li>sip.wrapper</li>
+<li>sip.simplewrapper</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="app.model.stock.Stock.currentLabel"><code class="name">var <span class="ident">currentLabel</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="app.model.stock.Stock.earliestDate"><code class="name">var <span class="ident">earliestDate</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="app.model.stock.Stock.highestValue"><code class="name">var <span class="ident">highestValue</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="app.model.stock.Stock.latestDate"><code class="name">var <span class="ident">latestDate</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="app.model.stock.Stock.loadedBytes"><code class="name">var <span class="ident">loadedBytes</span></code></dt>
+<dd>
+<section class="desc"><p>int([x]) -&gt; integer
+int(x, base=10) -&gt; integer</p>
+<p>Convert a number or string to an integer, or return 0 if no arguments
+are given.
+If x is a number, return x.<strong>int</strong>().
+For floating point
+numbers, this truncates towards zero.</p>
+<p>If x is not a number or if base is given, then x must be a string,
+bytes, or bytearray instance representing an integer literal in the
+given base.
+The literal can be preceded by '+' or '-' and be surrounded
+by whitespace.
+The base defaults to 10.
+Valid bases are 0 and 2-36.
+Base 0 means to interpret the base from the string as an integer literal.</p>
+<pre><code>&gt;&gt;&gt; int('0b100', base=0)
+4
+</code></pre></section>
+</dd>
+<dt id="app.model.stock.Stock.lowestValue"><code class="name">var <span class="ident">lowestValue</span></code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="app.model.stock.Stock.stockData"><code class="name">var <span class="ident">stockData</span></code></dt>
+<dd>
+<section class="desc"><p>dict() -&gt; new empty dictionary
+dict(mapping) -&gt; new dictionary initialized from a mapping object's
+(key, value) pairs
+dict(iterable) -&gt; new dictionary initialized as if via:
+d = {}
+for k, v in iterable:
+d[k] = v
+dict(**kwargs) -&gt; new dictionary initialized with the name=value pairs
+in the keyword argument list.
+For example:
+dict(one=1, two=2)</p></section>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="app.model.stock.Stock.createStockNode"><code class="name flex">
+<span>def <span class="ident">createStockNode</span></span>(<span>self, label)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Given a label create a node</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>label</code></strong> :&ensp;<code>str</code></dt>
+<dd>The node label</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>(StockNode)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def createStockNode(self, label: str):
+    &#39;&#39;&#39;
+        Given a label create a node
+
+        Args:
+            label (str): The node label
+
+        Returns:
+            (StockNode)
+    &#39;&#39;&#39;
+    return StockNode(label)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock.Stock.currentLoadBytes"><code class="name flex">
+<span>def <span class="ident">currentLoadBytes</span></span>(<span>...)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="app.model.stock.Stock.currentLoadLabel"><code class="name flex">
+<span>def <span class="ident">currentLoadLabel</span></span>(<span>...)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+</dd>
+<dt id="app.model.stock.Stock.findByDate"><code class="name flex">
+<span>def <span class="ident">findByDate</span></span>(<span>self, date)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Return all stock nodes for a given date</p>
+<h2 id="returns">Returns</h2>
+<p>(List[StockNode])</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findByDate(self, date: str):
+    &#39;&#39;&#39;
+        Return all stock nodes for a given date
+
+        Returns:
+            (List[StockNode])
+    &#39;&#39;&#39;
+    raise RuntimeError(&#34;Not implemented&#34;)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock.Stock.findByName"><code class="name flex">
+<span>def <span class="ident">findByName</span></span>(<span>self, label)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Return a single stock node by name</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>label</code></strong> :&ensp;<code>str</code></dt>
+<dd>stock name</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<p>(StockNode)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def findByName(self, label: str):
+    &#39;&#39;&#39;
+        Return a single stock node by name
+
+        Args:
+            label (str): stock name
+
+        Returns:
+            (StockNode)
+    &#39;&#39;&#39;
+    if label in self.stockData:
+        return self.stockData[label]
+    return None</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock.Stock.getEarliestDate"><code class="name flex">
+<span>def <span class="ident">getEarliestDate</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns a datetime representing the lower bound</p>
+<h2 id="returns">Returns</h2>
+<p>(datetime)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getEarliestDate(self):
+    &#39;&#39;&#39;
+        Returns a datetime representing the lower bound
+
+        Returns:
+            (datetime)
+    &#39;&#39;&#39;
+    return self.earliestDate</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock.Stock.getEarliestDateString"><code class="name flex">
+<span>def <span class="ident">getEarliestDateString</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns date as a string (yyyy-mm-dd)</p>
+<h2 id="returns">Returns</h2>
+<p>(str)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getEarliestDateString(self):
+    &#39;&#39;&#39;
+        Returns date as a string (yyyy-mm-dd)
+
+        Returns:
+            (str)
+    &#39;&#39;&#39;
+    return self.earliestDate.strftime(Constants.PY_DATE_FORMAT)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock.Stock.getHighestValue"><code class="name flex">
+<span>def <span class="ident">getHighestValue</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Get the highest value found</p>
+<h2 id="return">Return</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getHighestValue(self):
+    &#39;&#39;&#39;
+        Get the highest value found
+
+        Return:
+            (float)
+    &#39;&#39;&#39;
+    return self.highestValue</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock.Stock.getLatestDate"><code class="name flex">
+<span>def <span class="ident">getLatestDate</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns a datettime representing the upper bound</p>
+<h2 id="returns">Returns</h2>
+<p>(datetime)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getLatestDate(self):
+    &#39;&#39;&#39;
+        Returns a datettime representing the upper bound
+
+        Returns:
+            (datetime)
+    &#39;&#39;&#39;
+    return self.latestDate</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock.Stock.getLatestDateString"><code class="name flex">
+<span>def <span class="ident">getLatestDateString</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Returns date as a string (yyyy-mm-dd)</p>
+<h2 id="returns">Returns</h2>
+<p>(str)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getLatestDateString(self):
+    &#39;&#39;&#39;
+        Returns date as a string (yyyy-mm-dd)
+
+        Returns:
+            (str)
+    &#39;&#39;&#39;
+    return self.latestDate.strftime(Constants.PY_DATE_FORMAT)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock.Stock.getLowestValue"><code class="name flex">
+<span>def <span class="ident">getLowestValue</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Get the lowest value found</p>
+<h2 id="return">Return</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getLowestValue(self):
+    &#39;&#39;&#39;
+        Get the lowest value found
+
+        Return:
+            (float)
+    &#39;&#39;&#39;
+    return self.lowestValue</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock.Stock.insertStockNode"><code class="name flex">
+<span>def <span class="ident">insertStockNode</span></span>(<span>self, node)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Insert the node</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>node</code></strong> :&ensp;<code>StockNode</code></dt>
+<dd>The node to insert</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def insertStockNode(self, node):
+    &#39;&#39;&#39;
+        Insert the node
+
+        Args:
+            node (StockNode): The node to insert
+    &#39;&#39;&#39;
+    label = node.getLabel()
+    if label in self.stockData:
+        raise ValueError(label + &#34; already exists&#34;)
+    self.stockData[label] = node</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock.Stock.load"><code class="name flex">
+<span>def <span class="ident">load</span></span>(<span>self, stock_source)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Load the data into the model</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>stock_source</code></strong> :&ensp;<code>StockSource</code></dt>
+<dd>The source of our data</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load(self, stock_source):
+    &#39;&#39;&#39;
+        Load the data into the model
+
+        Args:
+            stock_source (StockSource): The source of our data
+
+    &#39;&#39;&#39;
+    self.stockData = {}
+    # TODO : validate headers
+    valueFields = [&#34;open&#34;, &#34;high&#34;, &#34;low&#34;, &#34;close&#34;]
+    # genRow is a generator that will yield rows till it completes
+    for row in stock_source.genRow():
+        self.loadedBytes += stock_source.getLineSize()
+        label = row[&#34;name&#34;]
+        date_string = row[&#34;date&#34;]
+        # create and insert a stock node if it doesnt exist
+        if label not in self.stockData:
+            self.insertStockNode(self.createStockNode(label))
+        # cast the string values
+        for field in valueFields:
+            if not row[field]:
+                row[field] = 0.0
+            else:
+                row[field] = float(row[field])
+
+        # update the node
+        self.stockData[label].addData(
+            date_string,
+            StockValue(row[&#34;open&#34;], row[&#34;high&#34;], row[&#34;low&#34;], row[&#34;close&#34;]))
+        # track the global bounds
+        date = datetime.strptime(date_string, Constants.PY_DATE_FORMAT)
+        if self.earliestDate is None or date &lt; self.earliestDate:
+            self.earliestDate = date
+        elif self.latestDate is None or date &gt; self.latestDate:
+            self.latestDate = date
+        if self.highestValue is None or row[&#34;high&#34;] &gt; self.highestValue:
+            self.highestValue = row[&#34;high&#34;]
+        elif self.lowestValue is None or row[&#34;low&#34;] &lt; self.lowestValue:
+            self.lowestValue = row[&#34;low&#34;]
+        if self.currentLabel is None or label != self.currentLabel:
+            self.currentLabel = label
+            self.currentLoadLabel.emit(label)
+            self.currentLoadBytes.emit(self.loadedBytes)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock.Stock.selectAll"><code class="name flex">
+<span>def <span class="ident">selectAll</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Return all the stock nodes</p>
+<h2 id="returns">Returns</h2>
+<p>(dict{string, StockNode})</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def selectAll(self):
+    &#39;&#39;&#39;
+        Return all the stock nodes
+
+        Returns:
+            (dict{string, StockNode})
+    &#39;&#39;&#39;
+    return self.stockData</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock.Stock.selectAllNames"><code class="name flex">
+<span>def <span class="ident">selectAllNames</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Return all stock labels</p>
+<h2 id="returns">Returns</h2>
+<p>(List[str])</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def selectAllNames(self):
+    &#39;&#39;&#39;
+        Return all stock labels
+
+        Returns:
+            (List[str])
+    &#39;&#39;&#39;
+    return self.stockData.keys()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="app.model" href="index.html">app.model</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="app.model.stock.Stock" href="#app.model.stock.Stock">Stock</a></code></h4>
+<ul class="">
+<li><code><a title="app.model.stock.Stock.createStockNode" href="#app.model.stock.Stock.createStockNode">createStockNode</a></code></li>
+<li><code><a title="app.model.stock.Stock.currentLabel" href="#app.model.stock.Stock.currentLabel">currentLabel</a></code></li>
+<li><code><a title="app.model.stock.Stock.currentLoadBytes" href="#app.model.stock.Stock.currentLoadBytes">currentLoadBytes</a></code></li>
+<li><code><a title="app.model.stock.Stock.currentLoadLabel" href="#app.model.stock.Stock.currentLoadLabel">currentLoadLabel</a></code></li>
+<li><code><a title="app.model.stock.Stock.earliestDate" href="#app.model.stock.Stock.earliestDate">earliestDate</a></code></li>
+<li><code><a title="app.model.stock.Stock.findByDate" href="#app.model.stock.Stock.findByDate">findByDate</a></code></li>
+<li><code><a title="app.model.stock.Stock.findByName" href="#app.model.stock.Stock.findByName">findByName</a></code></li>
+<li><code><a title="app.model.stock.Stock.getEarliestDate" href="#app.model.stock.Stock.getEarliestDate">getEarliestDate</a></code></li>
+<li><code><a title="app.model.stock.Stock.getEarliestDateString" href="#app.model.stock.Stock.getEarliestDateString">getEarliestDateString</a></code></li>
+<li><code><a title="app.model.stock.Stock.getHighestValue" href="#app.model.stock.Stock.getHighestValue">getHighestValue</a></code></li>
+<li><code><a title="app.model.stock.Stock.getLatestDate" href="#app.model.stock.Stock.getLatestDate">getLatestDate</a></code></li>
+<li><code><a title="app.model.stock.Stock.getLatestDateString" href="#app.model.stock.Stock.getLatestDateString">getLatestDateString</a></code></li>
+<li><code><a title="app.model.stock.Stock.getLowestValue" href="#app.model.stock.Stock.getLowestValue">getLowestValue</a></code></li>
+<li><code><a title="app.model.stock.Stock.highestValue" href="#app.model.stock.Stock.highestValue">highestValue</a></code></li>
+<li><code><a title="app.model.stock.Stock.insertStockNode" href="#app.model.stock.Stock.insertStockNode">insertStockNode</a></code></li>
+<li><code><a title="app.model.stock.Stock.latestDate" href="#app.model.stock.Stock.latestDate">latestDate</a></code></li>
+<li><code><a title="app.model.stock.Stock.load" href="#app.model.stock.Stock.load">load</a></code></li>
+<li><code><a title="app.model.stock.Stock.loadedBytes" href="#app.model.stock.Stock.loadedBytes">loadedBytes</a></code></li>
+<li><code><a title="app.model.stock.Stock.lowestValue" href="#app.model.stock.Stock.lowestValue">lowestValue</a></code></li>
+<li><code><a title="app.model.stock.Stock.selectAll" href="#app.model.stock.Stock.selectAll">selectAll</a></code></li>
+<li><code><a title="app.model.stock.Stock.selectAllNames" href="#app.model.stock.Stock.selectAllNames">selectAllNames</a></code></li>
+<li><code><a title="app.model.stock.Stock.stockData" href="#app.model.stock.Stock.stockData">stockData</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
