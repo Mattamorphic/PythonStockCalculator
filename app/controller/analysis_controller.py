@@ -6,13 +6,9 @@
     Author:
         Matthew Barber <mfmbarber@gmail.com>
 '''
-from app.view.components.analysis import (
-    AverageStockValueData
-)
-from app.view.components.stock import (
-    StockSelector
-)
+from app.view.components.analysis import AverageStockValueData
 from app.view.components.labels import AnalysisOverviewLabel
+from app.view.components.stock import StockSelector
 from app.view.layouts import AnalysisLayout
 from PyQt5.QtWidgets import QWidget
 
@@ -50,9 +46,8 @@ class AnalysisController(QWidget):
         '''
             Initializes the UI
         '''
-        selectedStockLabels = [node.getLabel() for node in self.stockNodes]
         self.stockSelectorComponent = StockSelector(
-            selectedStockLabels
+            [node.getLabel() for node in self.stockNodes]
         )
         self.stockSelectorComponent.onChange.connect(
             self.updateSelectedStockByLabel
@@ -96,7 +91,7 @@ class AnalysisController(QWidget):
         '''
         self.averageValues.updateAverageValues(self.getAverageValues())
 
-    def updateSelectedStock(self, node):
+    def updateSelectedStock(self, node=None):
         '''
             Updated the current stock node being analysed
 
@@ -108,7 +103,7 @@ class AnalysisController(QWidget):
             self.overviewComponent.createOverviewString(
                 self.fromDate,
                 self.toDate,
-                self.selectedStock.getLabel()
+                self.selectedStock.getLabel() if self.selectedStock else None
             )
         )
         self.updateAverageValues()
@@ -164,3 +159,5 @@ class AnalysisController(QWidget):
         )
         if stockNodes:
             self.updateSelectedStock(self.stockNodes[0])
+        else:
+            self.updateSelectedStock()

@@ -14,9 +14,6 @@ from .graph_controller import GraphController
 from .profit_controller import ProfitController
 from app.lib.constants import Constants
 from .stock_controller import StockController
-from PyQt5.QtWidgets import QVBoxLayout
-from PyQt5.QtWidgets import QHBoxLayout
-from PyQt5.QtWidgets import QTabWidget
 from PyQt5.QtWidgets import QWidget
 
 

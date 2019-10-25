@@ -97,12 +97,3 @@ class StockController(QWidget):
             ),
             clearSelected
         )
-
-    def getSelected(self):
-        '''
-            Getter for the amount instance variable
-
-            Returns:
-                str[]
-        '''
-        return self.selectedStock

@@ -28,39 +28,13 @@ class AmountController(QWidget):
                 amount  int     The initial amount
         '''
         super().__init__()
-        self.amount = amount
-        self.initUI()
-
-    def initUI(self):
-        '''
-            Initialize the UI widget for the controller (the view)
-        '''
-        self.amountComponent = Amount()
-        self.amountComponent.setValue(self.amount)
-        self.amountComponent.onChange.connect(self.updateAmount)
-        self.labelComponent = AmountLabel()
-
+        amountComponent = Amount(amount)
+        amountComponent.onChange.connect(
+            lambda amount: self.update.emit(
+                amount if amount is not None or '' else 0
+            )
+        )
         self.setLayout(AmountLayout(
-            self.labelComponent,
-            self.amountComponent
+            AmountLabel(),
+            amountComponent
         ))
-
-    def updateAmount(self, amount):
-        '''
-            Update the amount of stock
-
-            Args:
-                amount  int     The amount of stock
-        '''
-        self.amount = amount if amount is not None or '' else 0
-        # emit the custom signal with the new amount
-        self.update.emit(amount)
-
-    def getAmount(self):
-        '''
-            Getter for the amount instance variable
-
-            Returns:
-                int
-        '''
-        return self.amount

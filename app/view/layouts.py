@@ -1,22 +1,41 @@
+'''
+    Name:
+        Layouts for our views
+    Description:
+        Each of the layouts extend from the base layouts
+    Author:
+        Matthew Barber <mfmbarber@gmail.com>
+'''
+from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import (
     QFormLayout,
     QGroupBox,
     QBoxLayout,
     QHBoxLayout,
+    QLayout,
     QSizePolicy,
-    QVBoxLayout
+    QVBoxLayout,
+    QWidget
 )
+
 
 class BaseGroupedLayout(QBoxLayout):
 
     def __init__(self, direction, parent=None):
         super().__init__(direction, parent)
         self.groups = []
-        # Optimization - saves additional conditional check in create group
-        self.groupIndex = -1
+        self.groupIndex = 0
+        self.currentGroupIndex = 0
+        self.currentGroup = None
 
-    def addToCurrentGroup(self, component):
-        self.groups[self.groupIndex].addWidget(component)
+    def addToCurrentGroup(self, *components):
+
+        for component in components:
+            # add widget is only available on a layout that we have added to the QGroupBox
+            if isinstance(component, QWidget):
+                self.groups[self.groupIndex].addWidget(component)
+            elif isinstance(component, QLayout):
+                self.groups[self.groupIndex].addLayout(component)
 
     def addToExistingGroup(self, index, component):
         if self.groups[index]:
@@ -25,13 +44,28 @@ class BaseGroupedLayout(QBoxLayout):
             raise IndexError("Group at index is not set")
 
 
-    def createGroup(self, label=None, sizePolicy=None):
-        group = QGroupBox(label)
+    def createGroup(self, layout, label=None, sizePolicy=None):
+        self.currentGroup = QGroupBox(label)
         if sizePolicy:
-            group.setSizePolicy(*sizePolicy)
-        self.groups.append(group)
-        self.addWidget(group)
+            self.currentGroup.setSizePolicy(*sizePolicy)
+        self.groups.append(layout)
+
+    def finishGroup(self):
+        self.currentGroup.setLayout(self.groups[self.groupIndex])
+        self.addWidget(self.currentGroup)
+        self.currentGroup = None
         self.groupIndex += 1
+
+    def createVerticalGroup(self, label=None, sizePolicy=None, align=None):
+        layout = self.getVerticalLayout()
+        if align:
+            layout.setAlignment(align)
+        self.createGroup(self.getVerticalLayout(), label, sizePolicy)
+
+    def createHorizontalGroup(self, label=None, sizePolicy=None, align=None):
+        if align:
+            layout.setAlignment(align)
+        self.createGroup(self.getHorizontalLayout(), label, sizePolicy)
 
     def getFormLayout(self):
         return QFormLayout()
@@ -43,7 +77,7 @@ class BaseGroupedLayout(QBoxLayout):
         return QVBoxLayout()
 
     def setLayoutOfCurrentGroup(self, layout):
-        self.groups[self.groupIndex].setLayout(layout)
+        self.groups[self.groupIndex].addLayout(layout)
 
 class BaseRowGroupedLayout(BaseGroupedLayout):
     def __init__(self, parent=None):
@@ -59,10 +93,11 @@ class BaseColumnGroupedLayout(BaseGroupedLayout):
 class AmountLayout(BaseRowGroupedLayout):
     def __init__(self, label, amount, parent=None):
         super().__init__(parent)
-        self.createGroup(None, (QSizePolicy.Expanding, QSizePolicy.Fixed))
+        self.createVerticalGroup(None, (QSizePolicy.Expanding, QSizePolicy.Fixed))
         layout = self.getFormLayout()
         layout.addRow(label, amount)
-        self.setLayoutOfCurrentGroup(layout)
+        self.addToCurrentGroup(layout)
+        self.finishGroup()
 
 
 class AnalysisLayout(BaseRowGroupedLayout):
@@ -78,29 +113,36 @@ class AnalysisLayout(BaseRowGroupedLayout):
     ):
         super().__init__(parent)
         autoWidthFixedHeight = (QSizePolicy.Expanding, QSizePolicy.Fixed)
-        self.createGroup("Stock Selector", autoWidthFixedHeight)
+        self.createVerticalGroup("Stock Selector", autoWidthFixedHeight)
         self.addToCurrentGroup(stockSelector)
-        self.createGroup("Overview", autoWidthFixedHeight)
+        self.finishGroup()
+        self.createVerticalGroup("Overview", autoWidthFixedHeight)
         self.addToCurrentGroup(overview)
-        self.addLayout(averageValues)
+        self.finishGroup()
+        self.createVerticalGroup("Analysis", autoWidthFixedHeight)
+        self.addToCurrentGroup(averageValues)
+        self.finishGroup()
+        self.setStretch(2, 0)
 
 
 class CalendarLayout(BaseRowGroupedLayout):
 
     def __init__(self, name, label, calendar, parent=None):
         super().__init__(parent)
-        self.createGroup(name, (QSizePolicy.Expanding, QSizePolicy.Fixed))
+        self.createVerticalGroup(name, (QSizePolicy.Expanding, QSizePolicy.Fixed))
         self.addToCurrentGroup(label, calendar)
+        self.finishGroup()
 
 
 class GraphLayout(BaseRowGroupedLayout):
     def __init__(self, options, label, graph, parent=None):
         super().__init__()
-        self.createGroup("Graph Options", (QSizePolicy.Expanding, QSizePolicy.Fixed))
-        self.addToCurrentGroup(*options)
-        self.createGroup("Graph", (QSizePolicy.Expanding, QSizePolicy.Expanding))
+        self.createHorizontalGroup("Graph Options", (QSizePolicy.Expanding, QSizePolicy.Fixed))
+        self.addToCurrentGroup(*options.getOptions())
+        self.finishGroup()
+        self.createVerticalGroup("Graph", (QSizePolicy.Expanding, QSizePolicy.Expanding))
         self.addToCurrentGroup(label, graph)
-
+        self.finishGroup()
 
 
 class LoadingLayout(BaseRowGroupedLayout):
@@ -114,11 +156,12 @@ class LoadingLayout(BaseRowGroupedLayout):
     ):
         super().__init__(parent)
         self.addWidget(label)
-        self.createGroup("Progress", (QSizePolicy.Expanding, QSizePolicy.Fixed))
+        self.createVerticalGroup(None, (QSizePolicy.Expanding, QSizePolicy.Fixed))
         self.addToCurrentGroup(currentLoading, progress)
+        self.finishGroup()
 
 
-class ProfitLayout(QVBoxLayout):
+class ProfitLayout(BaseRowGroupedLayout):
     def __init__(
         self,
         stockSelector,
@@ -127,13 +170,16 @@ class ProfitLayout(QVBoxLayout):
     ):
         super().__init__(parent)
         autoWidthFixedHeight = (QSizePolicy.Expanding, QSizePolicy.Fixed)
-        self.createGroup("Stock Selector", autoWidthFixedHeight)
+        self.createVerticalGroup("Stock Selector", autoWidthFixedHeight, Qt.AlignTop)
         self.addToCurrentGroup(stockSelector)
-        self.addLayout(profitValue)
-        self.addStretch(0)
+        self.finishGroup()
+        self.createVerticalGroup("Profits", autoWidthFixedHeight, Qt.AlignTop)
+        self.addToCurrentGroup(profitValue)
+        self.finishGroup()
+        self.setAlignment(Qt.AlignTop)
 
 
-class StockLayout(QVBoxLayout):
+class StockLayout(BaseRowGroupedLayout):
 
     def __init__(
         self,
@@ -144,10 +190,11 @@ class StockLayout(QVBoxLayout):
         parent=None
     ):
         super().__init__(parent)
-        self.createGroup("Stock to purchase", (QSizePolicy.Expanding, QSizePolicy.Expanding))
+        self.createVerticalGroup("Stock to purchase", (QSizePolicy.Expanding, QSizePolicy.Expanding))
         self.addToCurrentGroup(
-            label,
-            stockClear,
             stockFilter,
+            stockClear,
+            label,
             stockList
         )
+        self.finishGroup()

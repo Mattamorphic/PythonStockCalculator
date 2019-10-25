@@ -7,6 +7,7 @@
         Matthew Barber <mfmbarber@gmail.com>
 '''
 from app.view.components.graph import (
+    GraphOptions,
     StockLineGraph
 )
 from app.view.components.labels import GraphLabel

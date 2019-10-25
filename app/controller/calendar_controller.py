@@ -78,12 +78,3 @@ class CalendarController(QWidget):
         '''
         self.latest = date
         self.calendarComponent.setMaximumDate(date)
-
-    def getDate(self):
-        '''
-            Getter for the date instance variable value
-
-            Returns:
-                string
-        '''
-        return self.date

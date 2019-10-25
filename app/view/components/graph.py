@@ -11,7 +11,7 @@ import pyqtgraph as pg
 from app.lib.constants import Constants
 from PyQt5.QtCore import pyqtSignal
 from PyQt5.QtGui import QFont
-from PyQt5.QtWidgets import QRadioButton
+from PyQt5.QtWidgets import QRadioButton, QWidget
 
 
 class NonScientificAxis(pg.AxisItem):
@@ -134,12 +134,13 @@ class StockLineGraph(pg.GraphicsLayoutWidget):
         print('click')
 
 
-class GraphOptions:
+class GraphOptions(QWidget):
 
     onChecked = pyqtSignal(str)
 
     def __init__(self, initial):
-        options = []
+        super().__init__()
+        self.options = []
         for option in Constants.GraphOptions.all():
             radio = GraphOptionButton(option)
             radio.toggled.connect(

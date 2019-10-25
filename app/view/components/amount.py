@@ -16,15 +16,16 @@ class Amount(QSpinBox):
     '''
     onChange = pyqtSignal(int)
 
-    def __init__(self, parent=None):
+    def __init__(self, amount, parent=None):
         '''
             Initialize the widget
 
             Args:
-                value   int     Base value
+                amount   int     Base value
                 parent  QWidget The parent to attach the widget to
         '''
         super().__init__(parent)
+        self.setValue(amount)
         self.setRange(1, 1000000)
         self.valueChanged.connect(self.amountChange)
 
