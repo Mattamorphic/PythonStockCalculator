@@ -67,13 +67,13 @@ class MainController(QWidget):
         '''
         layout = QVBoxLayout()
         self.setLayout(layout)
-        layout.addWidget(self.amountController)
-
         config = QHBoxLayout()
         config.addWidget(self.selectedStockController)
         config.addWidget(self.fromCalendarController)
         config.addWidget(self.toCalendarController)
         layout.addLayout(config)
+
+        layout.addWidget(self.amountController)
 
         tabs = QTabWidget()
         tabs.addTab(self.profitController, 'Profit Estimates')

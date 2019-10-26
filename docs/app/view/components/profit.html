@@ -127,6 +127,13 @@ class StockProfitValueData(QVBoxLayout):
             &#39;Sell Price:&#39;, self.stockProfit.getHighestSellPrice())
         self.highProfitComponent = group.addRow(
             &#39;profit:&#39;, self.stockProfit.getHighestMargin())
+        group.addColumn(&#34;Average data&#34;)
+        self.averageBuyComponent = group.addRow(
+            &#39;Buy Price:&#39;, self.stockProfit.getAverageBuyPrice())
+        self.averageSellComponent = group.addRow(
+            &#39;Sell Price:&#39;, self.stockProfit.getAverageSellPrice())
+        self.averageProfitComponent = group.addRow(
+            &#39;profit:&#39;, self.stockProfit.getAverageMargin())
         self.addLayout(group.done())
 
     def updateProfitValues(self, stockProfit):
@@ -140,13 +147,19 @@ class StockProfitValueData(QVBoxLayout):
         self.lowBuyComponent.updateValue(self.stockProfit.getLowestBuyPrice())
         self.highBuyComponent.updateValue(
             self.stockProfit.getHighestBuyPrice())
+        self.averageBuyComponent.updateValue(
+            self.stockProfit.getAverageBuyPrice())
         self.lowSellComponent.updateValue(
             self.stockProfit.getLowestSellPrice())
         self.highSellComponent.updateValue(
             self.stockProfit.getHighestSellPrice())
+        self.averageSellComponent.updateValue(
+            self.stockProfit.getAverageSellPrice())
         self.lowProfitComponent.updateValue(self.stockProfit.getLowestMargin())
         self.highProfitComponent.updateValue(
-            self.stockProfit.getHighestMargin())</code></pre>
+            self.stockProfit.getHighestMargin())
+        self.averageProfitComponent.updateValue(
+            self.stockProfit.getAverageMargin())</code></pre>
 </details>
 </section>
 <section>
@@ -215,6 +228,13 @@ class StockProfitValueData(QVBoxLayout):
             &#39;Sell Price:&#39;, self.stockProfit.getHighestSellPrice())
         self.highProfitComponent = group.addRow(
             &#39;profit:&#39;, self.stockProfit.getHighestMargin())
+        group.addColumn(&#34;Average data&#34;)
+        self.averageBuyComponent = group.addRow(
+            &#39;Buy Price:&#39;, self.stockProfit.getAverageBuyPrice())
+        self.averageSellComponent = group.addRow(
+            &#39;Sell Price:&#39;, self.stockProfit.getAverageSellPrice())
+        self.averageProfitComponent = group.addRow(
+            &#39;profit:&#39;, self.stockProfit.getAverageMargin())
         self.addLayout(group.done())
 
     def updateProfitValues(self, stockProfit):
@@ -228,13 +248,19 @@ class StockProfitValueData(QVBoxLayout):
         self.lowBuyComponent.updateValue(self.stockProfit.getLowestBuyPrice())
         self.highBuyComponent.updateValue(
             self.stockProfit.getHighestBuyPrice())
+        self.averageBuyComponent.updateValue(
+            self.stockProfit.getAverageBuyPrice())
         self.lowSellComponent.updateValue(
             self.stockProfit.getLowestSellPrice())
         self.highSellComponent.updateValue(
             self.stockProfit.getHighestSellPrice())
+        self.averageSellComponent.updateValue(
+            self.stockProfit.getAverageSellPrice())
         self.lowProfitComponent.updateValue(self.stockProfit.getLowestMargin())
         self.highProfitComponent.updateValue(
-            self.stockProfit.getHighestMargin())</code></pre>
+            self.stockProfit.getHighestMargin())
+        self.averageProfitComponent.updateValue(
+            self.stockProfit.getAverageMargin())</code></pre>
 </details>
 <h3>Ancestors</h3>
 <ul class="hlist">
@@ -303,6 +329,13 @@ def createEmptyValue():
         &#39;Sell Price:&#39;, self.stockProfit.getHighestSellPrice())
     self.highProfitComponent = group.addRow(
         &#39;profit:&#39;, self.stockProfit.getHighestMargin())
+    group.addColumn(&#34;Average data&#34;)
+    self.averageBuyComponent = group.addRow(
+        &#39;Buy Price:&#39;, self.stockProfit.getAverageBuyPrice())
+    self.averageSellComponent = group.addRow(
+        &#39;Sell Price:&#39;, self.stockProfit.getAverageSellPrice())
+    self.averageProfitComponent = group.addRow(
+        &#39;profit:&#39;, self.stockProfit.getAverageMargin())
     self.addLayout(group.done())</code></pre>
 </details>
 </dd>
@@ -331,13 +364,19 @@ def createEmptyValue():
     self.lowBuyComponent.updateValue(self.stockProfit.getLowestBuyPrice())
     self.highBuyComponent.updateValue(
         self.stockProfit.getHighestBuyPrice())
+    self.averageBuyComponent.updateValue(
+        self.stockProfit.getAverageBuyPrice())
     self.lowSellComponent.updateValue(
         self.stockProfit.getLowestSellPrice())
     self.highSellComponent.updateValue(
         self.stockProfit.getHighestSellPrice())
+    self.averageSellComponent.updateValue(
+        self.stockProfit.getAverageSellPrice())
     self.lowProfitComponent.updateValue(self.stockProfit.getLowestMargin())
     self.highProfitComponent.updateValue(
-        self.stockProfit.getHighestMargin())</code></pre>
+        self.stockProfit.getHighestMargin())
+    self.averageProfitComponent.updateValue(
+        self.stockProfit.getAverageMargin())</code></pre>
 </details>
 </dd>
 </dl>

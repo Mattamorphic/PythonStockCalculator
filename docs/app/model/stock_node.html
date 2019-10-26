@@ -269,6 +269,16 @@ class StockProfit:
                      (self.multiplier / 1.0), 2)
 
     @profitPreNoneCheck
+    def getAverageMargin(self):
+        &#39;&#39;&#39;
+            Get the average profit
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round((self.getHighestMargin() + self.getLowestMargin()) / 2, 2)
+
+    @profitPreNoneCheck
     def getLowestBuyPrice(self):
         &#39;&#39;&#39;
             Returns the lowest buy price
@@ -289,6 +299,14 @@ class StockProfit:
         return round(self.buy.getHighValue() * self.multiplier, 2)
 
     @profitPreNoneCheck
+    def getAverageBuyPrice(self):
+        &#39;&#39;&#39;
+            Returns the average buy price
+        &#39;&#39;&#39;
+        return round(
+            (self.getHighestBuyPrice() + self.getLowestBuyPrice()) / 2)
+
+    @profitPreNoneCheck
     def getLowestSellPrice(self):
         &#39;&#39;&#39;
             Returns the lowest sell price
@@ -306,7 +324,15 @@ class StockProfit:
             Returns:
                 (float)
         &#39;&#39;&#39;
-        return round(self.sell.getHighValue() * self.multiplier, 2)</code></pre>
+        return round(self.sell.getHighValue() * self.multiplier, 2)
+
+    @profitPreNoneCheck
+    def getAverageSellPrice(self):
+        &#39;&#39;&#39;
+            Returns the average sell price
+        &#39;&#39;&#39;
+        return round(
+            (self.getHighestSellPrice() + self.getLowestSellPrice()) / 2)</code></pre>
 </details>
 </section>
 <section>
@@ -696,6 +722,16 @@ The stock value on sell date</p></section>
                      (self.multiplier / 1.0), 2)
 
     @profitPreNoneCheck
+    def getAverageMargin(self):
+        &#39;&#39;&#39;
+            Get the average profit
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round((self.getHighestMargin() + self.getLowestMargin()) / 2, 2)
+
+    @profitPreNoneCheck
     def getLowestBuyPrice(self):
         &#39;&#39;&#39;
             Returns the lowest buy price
@@ -716,6 +752,14 @@ The stock value on sell date</p></section>
         return round(self.buy.getHighValue() * self.multiplier, 2)
 
     @profitPreNoneCheck
+    def getAverageBuyPrice(self):
+        &#39;&#39;&#39;
+            Returns the average buy price
+        &#39;&#39;&#39;
+        return round(
+            (self.getHighestBuyPrice() + self.getLowestBuyPrice()) / 2)
+
+    @profitPreNoneCheck
     def getLowestSellPrice(self):
         &#39;&#39;&#39;
             Returns the lowest sell price
@@ -733,10 +777,132 @@ The stock value on sell date</p></section>
             Returns:
                 (float)
         &#39;&#39;&#39;
-        return round(self.sell.getHighValue() * self.multiplier, 2)</code></pre>
+        return round(self.sell.getHighValue() * self.multiplier, 2)
+
+    @profitPreNoneCheck
+    def getAverageSellPrice(self):
+        &#39;&#39;&#39;
+            Returns the average sell price
+        &#39;&#39;&#39;
+        return round(
+            (self.getHighestSellPrice() + self.getLowestSellPrice()) / 2)</code></pre>
 </details>
 <h3>Methods</h3>
 <dl>
+<dt id="app.model.stock_node.StockProfit.getAverageBuyPrice"><code class="name flex">
+<span>def <span class="ident">getAverageBuyPrice</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockProfit.getAverageMargin"><code class="name flex">
+<span>def <span class="ident">getAverageMargin</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockProfit.getAverageSellPrice"><code class="name flex">
+<span>def <span class="ident">getAverageSellPrice</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
 <dt id="app.model.stock_node.StockProfit.getHighestBuyPrice"><code class="name flex">
 <span>def <span class="ident">getHighestBuyPrice</span></span>(<span>self, *args, **kwargs)</span>
 </code></dt>
@@ -1220,6 +1386,9 @@ close
 <li>
 <h4><code><a title="app.model.stock_node.StockProfit" href="#app.model.stock_node.StockProfit">StockProfit</a></code></h4>
 <ul class="two-column">
+<li><code><a title="app.model.stock_node.StockProfit.getAverageBuyPrice" href="#app.model.stock_node.StockProfit.getAverageBuyPrice">getAverageBuyPrice</a></code></li>
+<li><code><a title="app.model.stock_node.StockProfit.getAverageMargin" href="#app.model.stock_node.StockProfit.getAverageMargin">getAverageMargin</a></code></li>
+<li><code><a title="app.model.stock_node.StockProfit.getAverageSellPrice" href="#app.model.stock_node.StockProfit.getAverageSellPrice">getAverageSellPrice</a></code></li>
 <li><code><a title="app.model.stock_node.StockProfit.getHighestBuyPrice" href="#app.model.stock_node.StockProfit.getHighestBuyPrice">getHighestBuyPrice</a></code></li>
 <li><code><a title="app.model.stock_node.StockProfit.getHighestMargin" href="#app.model.stock_node.StockProfit.getHighestMargin">getHighestMargin</a></code></li>
 <li><code><a title="app.model.stock_node.StockProfit.getHighestSellPrice" href="#app.model.stock_node.StockProfit.getHighestSellPrice">getHighestSellPrice</a></code></li>

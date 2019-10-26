@@ -98,13 +98,13 @@ class MainController(QWidget):
         &#39;&#39;&#39;
         layout = QVBoxLayout()
         self.setLayout(layout)
-        layout.addWidget(self.amountController)
-
         config = QHBoxLayout()
         config.addWidget(self.selectedStockController)
         config.addWidget(self.fromCalendarController)
         config.addWidget(self.toCalendarController)
         layout.addLayout(config)
+
+        layout.addWidget(self.amountController)
 
         tabs = QTabWidget()
         tabs.addTab(self.profitController, &#39;Profit Estimates&#39;)
@@ -325,13 +325,13 @@ setup the controllers and init the UI</p></section>
         &#39;&#39;&#39;
         layout = QVBoxLayout()
         self.setLayout(layout)
-        layout.addWidget(self.amountController)
-
         config = QHBoxLayout()
         config.addWidget(self.selectedStockController)
         config.addWidget(self.fromCalendarController)
         config.addWidget(self.toCalendarController)
         layout.addLayout(config)
+
+        layout.addWidget(self.amountController)
 
         tabs = QTabWidget()
         tabs.addTab(self.profitController, &#39;Profit Estimates&#39;)
@@ -532,13 +532,13 @@ tie each of these controllers to the main controller</p></section>
     &#39;&#39;&#39;
     layout = QVBoxLayout()
     self.setLayout(layout)
-    layout.addWidget(self.amountController)
-
     config = QHBoxLayout()
     config.addWidget(self.selectedStockController)
     config.addWidget(self.fromCalendarController)
     config.addWidget(self.toCalendarController)
     layout.addLayout(config)
+
+    layout.addWidget(self.amountController)
 
     tabs = QTabWidget()
     tabs.addTab(self.profitController, &#39;Profit Estimates&#39;)

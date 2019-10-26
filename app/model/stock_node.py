@@ -238,6 +238,16 @@ class StockProfit:
                      (self.multiplier / 1.0), 2)
 
     @profitPreNoneCheck
+    def getAverageMargin(self):
+        '''
+            Get the average profit
+
+            Returns:
+                (float)
+        '''
+        return round((self.getHighestMargin() + self.getLowestMargin()) / 2, 2)
+
+    @profitPreNoneCheck
     def getLowestBuyPrice(self):
         '''
             Returns the lowest buy price
@@ -258,6 +268,14 @@ class StockProfit:
         return round(self.buy.getHighValue() * self.multiplier, 2)
 
     @profitPreNoneCheck
+    def getAverageBuyPrice(self):
+        '''
+            Returns the average buy price
+        '''
+        return round(
+            (self.getHighestBuyPrice() + self.getLowestBuyPrice()) / 2)
+
+    @profitPreNoneCheck
     def getLowestSellPrice(self):
         '''
             Returns the lowest sell price
@@ -276,3 +294,11 @@ class StockProfit:
                 (float)
         '''
         return round(self.sell.getHighValue() * self.multiplier, 2)
+
+    @profitPreNoneCheck
+    def getAverageSellPrice(self):
+        '''
+            Returns the average sell price
+        '''
+        return round(
+            (self.getHighestSellPrice() + self.getLowestSellPrice()) / 2)

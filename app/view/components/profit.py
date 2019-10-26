@@ -96,6 +96,13 @@ class StockProfitValueData(QVBoxLayout):
             'Sell Price:', self.stockProfit.getHighestSellPrice())
         self.highProfitComponent = group.addRow(
             'profit:', self.stockProfit.getHighestMargin())
+        group.addColumn("Average data")
+        self.averageBuyComponent = group.addRow(
+            'Buy Price:', self.stockProfit.getAverageBuyPrice())
+        self.averageSellComponent = group.addRow(
+            'Sell Price:', self.stockProfit.getAverageSellPrice())
+        self.averageProfitComponent = group.addRow(
+            'profit:', self.stockProfit.getAverageMargin())
         self.addLayout(group.done())
 
     def updateProfitValues(self, stockProfit):
@@ -109,10 +116,16 @@ class StockProfitValueData(QVBoxLayout):
         self.lowBuyComponent.updateValue(self.stockProfit.getLowestBuyPrice())
         self.highBuyComponent.updateValue(
             self.stockProfit.getHighestBuyPrice())
+        self.averageBuyComponent.updateValue(
+            self.stockProfit.getAverageBuyPrice())
         self.lowSellComponent.updateValue(
             self.stockProfit.getLowestSellPrice())
         self.highSellComponent.updateValue(
             self.stockProfit.getHighestSellPrice())
+        self.averageSellComponent.updateValue(
+            self.stockProfit.getAverageSellPrice())
         self.lowProfitComponent.updateValue(self.stockProfit.getLowestMargin())
         self.highProfitComponent.updateValue(
             self.stockProfit.getHighestMargin())
+        self.averageProfitComponent.updateValue(
+            self.stockProfit.getAverageMargin())
