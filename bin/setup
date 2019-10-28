@@ -39,7 +39,7 @@ d8'   .8P 88.  ...   88   88.  .88 88.  .88
 ===================================================================
 ''')
 print("-\t[Checking location]")
-execute_step(["ls", "venv"], "Location check failed")
+execute_step(["ls", "app"], "Location check failed")
 
 print("-\t[Deactivating venv]")
 execute_step(["deactivate"], "Couldn't deactivate")
