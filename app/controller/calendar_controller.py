@@ -1,0 +1,77 @@
+'''
+    Calendar Controller
+    Controller for the returned calendar widget
+
+    Author:
+        Matthew Barber <mfmbarber@gmail.com>
+'''
+
+from app.view.components.calendar import Calendar
+from app.view.components.labels import CalendarLabel
+from app.view.layouts import CalendarLayout
+from PyQt5.QtCore import pyqtSignal
+from PyQt5.QtWidgets import QWidget
+
+
+class CalendarController(QWidget):
+    '''
+        Calendar controller handles delivering and monitoring a calendar widget
+    '''
+    update = pyqtSignal(str)
+
+    def __init__(self, date: str, earliest=None, latest=None, name=None):
+        '''
+            Initialize the calendar component with an initial value
+
+            Args:
+                date        (str): Initial Date in yyyy-mm-dd format
+                earliest    (str): Earliest Date in yyyy-mm-dd format
+                latest      (str): Latest Date in yyyy-mm-dd format
+        '''
+        super().__init__()
+        # TODO : Add parameter validation
+        self.date = date
+        self.earliest = earliest
+        self.latest = latest
+        self.initUI(name)
+
+    def initUI(self, name):
+        '''
+            Initializes the UI widgets for the calendar component view
+        '''
+        self.calendarComponent = Calendar(self.date, self.earliest,
+                                          self.latest)
+        self.calendarComponent.onChange.connect(self.updateDate)
+        self.labelComponent = CalendarLabel(self.date)
+        self.setLayout(
+            CalendarLayout(name, self.labelComponent, self.calendarComponent))
+
+    def updateDate(self, date: str):
+        '''
+            Initialize the UI widget for the controller (the view)
+
+            Args:
+                date (str): Date in  yyyy-mm-dd format
+        '''
+        self.labelComponent.update(date)
+        self.update.emit(date)
+
+    def setEarliestDate(self, date: str):
+        '''
+            Set the earliest date for the calendar
+
+            Args:
+                date (str): Date in yyyy-mm-dd format
+        '''
+        self.earliest = date
+        self.calendarComponent.setMinimumDate(date)
+
+    def setLatestDate(self, date: str):
+        '''
+            Set the latest date for the calendar
+
+            Args:
+                date (str): Date in yyyy-mm-dd format
+        '''
+        self.latest = date
+        self.calendarComponent.setMaximumDate(date)

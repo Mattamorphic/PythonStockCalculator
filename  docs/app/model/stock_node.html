@@ -1,0 +1,1529 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.1" />
+<title>app.model.stock_node API documentation</title>
+<meta name="description" content="Stock Node Data Module
+A module holding classes for dealing with stock nodes …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>app.model.stock_node</code></h1>
+</header>
+<section id="section-intro">
+<p>Stock Node Data Module
+A module holding classes for dealing with stock nodes</p>
+<h2 id="author">Author</h2>
+<p>Matthew Barber <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#102;&#109;&#98;&#97;&#114;&#98;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#109;&#102;&#109;&#98;&#97;&#114;&#98;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#39;&#39;&#39;
+    Stock Node Data Module
+    A module holding classes for dealing with stock nodes
+
+    Author:
+        Matthew Barber &lt;mfmbarber@gmail.com&gt;
+&#39;&#39;&#39;
+from app.lib.constants import Constants
+from datetime import datetime, timedelta
+
+
+class StockNode:
+    &#39;&#39;&#39;
+        A stock node represents a stock
+    &#39;&#39;&#39;
+    def __init__(self, label):
+        self.data = {}
+        self.label = label
+
+    def getLabel(self):
+        &#39;&#39;&#39;
+            Return the label for the stock
+
+            Returns:
+                str
+        &#39;&#39;&#39;
+        return self.label
+
+    def addData(self, date: str, stock_value):
+        &#39;&#39;&#39;
+            Add data to the stock node
+
+            Args:
+                date        (str):          The date for the data
+                stock_value (StockValue):   The StockValue for the data
+        &#39;&#39;&#39;
+        if date not in self.data:
+            self.data[date] = stock_value
+        else:
+            raise ValueError(&#34;No two entries can exist for the same date&#34;)
+
+    def getValueForDate(self, date: str):
+        &#39;&#39;&#39;
+            Return a stock value for a specific date
+
+            Args:
+                date (str): The date to return the value for
+
+            Returns:
+                StockValue || None
+        &#39;&#39;&#39;
+        if date in self.data:
+            return self.data[date]
+        return None
+
+    def getAverageValues(self, fromDate: str, toDate: str):
+        &#39;&#39;&#39;
+            Calculate the average values between two dates
+
+            Args:
+                fromDate    (str):  The from (buy) date
+                toDate      (str):  The to (sell) date
+
+            Returns:
+                StockValue
+        &#39;&#39;&#39;
+        currentDate = datetime.strptime(fromDate, Constants.PY_DATE_FORMAT)
+        endDate = datetime.strptime(toDate, Constants.PY_DATE_FORMAT)
+        # Create a time delta to iterate with
+        delta = timedelta(days=1)
+        totalCount = 0
+        open = 0.0
+        high = 0.0
+        low = 0.0
+        close = 0.0
+
+        while currentDate &lt; endDate:
+            node = self.getValueForDate(
+                currentDate.strftime(Constants.PY_DATE_FORMAT))
+            if node is not None:
+                totalCount += 1
+                open += node.getOpeningValue()
+                high += node.getHighValue()
+                low += node.getLowValue()
+                close = node.getCloseValue()
+            currentDate += delta
+        return StockValue(round(open / totalCount, 2),
+                          round(high / totalCount, 2),
+                          round(low / totalCount, 2),
+                          round(close / totalCount, 2))
+
+    def getProfitValue(self, amount, fromDate, toDate):
+        buyValue = self.getValueForDate(fromDate)
+        sellValue = self.getValueForDate(toDate)
+        if buyValue is None or sellValue is None:
+            return None
+
+        return StockProfit(amount, buyValue, sellValue)
+
+
+class StockValue:
+    &#39;&#39;&#39;
+        Stock value represents the value for a stock on a given day
+
+        Args:
+            open    (float): The opening price on the given date
+            high    (float): The high price on the given date
+            low     (float): The low price on the given date
+            close   (float): The close price on the given date
+    &#39;&#39;&#39;
+    def __init__(self, open: float, high: float, low: float, close: float):
+        self.open = open
+        self.high = high
+        self.low = low
+        self.close = close
+
+    def getCloseValue(self):
+        &#39;&#39;&#39;
+            Getter for close value
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return self.close
+
+    def getHighValue(self):
+        &#39;&#39;&#39;
+            Getter for high value
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return self.high
+
+    def getLowValue(self):
+        &#39;&#39;&#39;
+            Getter for low value
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return self.low
+
+    def getOpeningValue(self):
+        &#39;&#39;&#39;
+            Getter for opening value
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return self.open
+
+    def getDayDiff(self):
+        &#39;&#39;&#39;
+            Determine the difference between the close and open
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return self.close - self.open
+
+    def getHighLowDiff(self):
+        &#39;&#39;&#39;
+            Determine the difference between the high and low
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return self.high - self.low
+
+    def getOHLCAverage(self):
+        &#39;&#39;&#39;
+            Determine the OHLC average and return this
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return (self.open + self.high + self.low + self.close) / 4
+
+
+def profitPreNoneCheck(func):
+    &#39;&#39;&#39;
+        Decorator for stock profit methods, as they have this preflight check
+
+        Args:
+            func   (class method)   The class method to trigger
+
+        Returns:
+            func
+    &#39;&#39;&#39;
+    def decorator(self, *args, **kwargs):
+        &#39;&#39;&#39;
+            Decorator function (with instance)
+
+            Args:
+                self        (self):     A class instance
+                *args       (args):     Unnamed args
+                **kwargs    (kwargs):   Keyed args
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        if self.buy is None or self.sell is None:
+            return 0.0
+        return func(self, *args, **kwargs)
+
+    return decorator
+
+
+class StockProfit:
+    &#39;&#39;&#39;
+        Stock profit class, used for profit related calculations
+    &#39;&#39;&#39;
+    def __init__(self, amount: int, buyValue=None, sellValue=None):
+        &#39;&#39;&#39;
+            Initialize the StockProfit class
+
+            Args:
+                amount      (int):           The amount of stock
+                buyValue    (StockValue):    The stock value on buy date
+                sellValue   (StockValue):    The stock value on sell date
+        &#39;&#39;&#39;
+        self.multiplier = amount
+        self.buy = buyValue
+        self.sell = sellValue
+
+    @profitPreNoneCheck
+    def getLowestMargin(self):
+        &#39;&#39;&#39;
+            Returns the lowest profit
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round((self.sell.getLowValue() - self.buy.getHighValue()) *
+                     (self.multiplier / 1.0), 2)
+
+    @profitPreNoneCheck
+    def getHighestMargin(self):
+        &#39;&#39;&#39;
+            Returns the highest profit
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round((self.sell.getHighValue() - self.buy.getLowValue()) *
+                     (self.multiplier / 1.0), 2)
+
+    @profitPreNoneCheck
+    def getAverageMargin(self):
+        &#39;&#39;&#39;
+            Get the average profit
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round((self.getHighestMargin() + self.getLowestMargin()) / 2, 2)
+
+    @profitPreNoneCheck
+    def getLowestBuyPrice(self):
+        &#39;&#39;&#39;
+            Returns the lowest buy price
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round(self.buy.getLowValue() * self.multiplier, 2)
+
+    @profitPreNoneCheck
+    def getHighestBuyPrice(self):
+        &#39;&#39;&#39;
+            Returns the highest buy price
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round(self.buy.getHighValue() * self.multiplier, 2)
+
+    @profitPreNoneCheck
+    def getAverageBuyPrice(self):
+        &#39;&#39;&#39;
+            Returns the average buy price
+        &#39;&#39;&#39;
+        return round(
+            (self.getHighestBuyPrice() + self.getLowestBuyPrice()) / 2)
+
+    @profitPreNoneCheck
+    def getLowestSellPrice(self):
+        &#39;&#39;&#39;
+            Returns the lowest sell price
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round(self.sell.getLowValue() * self.multiplier, 2)
+
+    @profitPreNoneCheck
+    def getHighestSellPrice(self):
+        &#39;&#39;&#39;
+            Returns the highest sell price
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round(self.sell.getHighValue() * self.multiplier, 2)
+
+    @profitPreNoneCheck
+    def getAverageSellPrice(self):
+        &#39;&#39;&#39;
+            Returns the average sell price
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round(
+            (self.getHighestSellPrice() + self.getLowestSellPrice()) / 2)
+
+    @profitPreNoneCheck
+    def getPercentageGain(self):
+        &#39;&#39;&#39;
+            Returns the percentage gain between buy and sell
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round((self.sell.getOHLCAverage() - self.buy.getOHLCAverage()) /
+                     self.buy.getOHLCAverage() * 100, 4)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="app.model.stock_node.profitPreNoneCheck"><code class="name flex">
+<span>def <span class="ident">profitPreNoneCheck</span></span>(<span>func)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator for stock profit methods, as they have this preflight check</p>
+<h2 id="args">Args</h2>
+<p>func
+(class method)
+The class method to trigger</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>func</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def profitPreNoneCheck(func):
+    &#39;&#39;&#39;
+        Decorator for stock profit methods, as they have this preflight check
+
+        Args:
+            func   (class method)   The class method to trigger
+
+        Returns:
+            func
+    &#39;&#39;&#39;
+    def decorator(self, *args, **kwargs):
+        &#39;&#39;&#39;
+            Decorator function (with instance)
+
+            Args:
+                self        (self):     A class instance
+                *args       (args):     Unnamed args
+                **kwargs    (kwargs):   Keyed args
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        if self.buy is None or self.sell is None:
+            return 0.0
+        return func(self, *args, **kwargs)
+
+    return decorator</code></pre>
+</details>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="app.model.stock_node.StockNode"><code class="flex name class">
+<span>class <span class="ident">StockNode</span></span>
+<span>(</span><span>label)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A stock node represents a stock</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StockNode:
+    &#39;&#39;&#39;
+        A stock node represents a stock
+    &#39;&#39;&#39;
+    def __init__(self, label):
+        self.data = {}
+        self.label = label
+
+    def getLabel(self):
+        &#39;&#39;&#39;
+            Return the label for the stock
+
+            Returns:
+                str
+        &#39;&#39;&#39;
+        return self.label
+
+    def addData(self, date: str, stock_value):
+        &#39;&#39;&#39;
+            Add data to the stock node
+
+            Args:
+                date        (str):          The date for the data
+                stock_value (StockValue):   The StockValue for the data
+        &#39;&#39;&#39;
+        if date not in self.data:
+            self.data[date] = stock_value
+        else:
+            raise ValueError(&#34;No two entries can exist for the same date&#34;)
+
+    def getValueForDate(self, date: str):
+        &#39;&#39;&#39;
+            Return a stock value for a specific date
+
+            Args:
+                date (str): The date to return the value for
+
+            Returns:
+                StockValue || None
+        &#39;&#39;&#39;
+        if date in self.data:
+            return self.data[date]
+        return None
+
+    def getAverageValues(self, fromDate: str, toDate: str):
+        &#39;&#39;&#39;
+            Calculate the average values between two dates
+
+            Args:
+                fromDate    (str):  The from (buy) date
+                toDate      (str):  The to (sell) date
+
+            Returns:
+                StockValue
+        &#39;&#39;&#39;
+        currentDate = datetime.strptime(fromDate, Constants.PY_DATE_FORMAT)
+        endDate = datetime.strptime(toDate, Constants.PY_DATE_FORMAT)
+        # Create a time delta to iterate with
+        delta = timedelta(days=1)
+        totalCount = 0
+        open = 0.0
+        high = 0.0
+        low = 0.0
+        close = 0.0
+
+        while currentDate &lt; endDate:
+            node = self.getValueForDate(
+                currentDate.strftime(Constants.PY_DATE_FORMAT))
+            if node is not None:
+                totalCount += 1
+                open += node.getOpeningValue()
+                high += node.getHighValue()
+                low += node.getLowValue()
+                close = node.getCloseValue()
+            currentDate += delta
+        return StockValue(round(open / totalCount, 2),
+                          round(high / totalCount, 2),
+                          round(low / totalCount, 2),
+                          round(close / totalCount, 2))
+
+    def getProfitValue(self, amount, fromDate, toDate):
+        buyValue = self.getValueForDate(fromDate)
+        sellValue = self.getValueForDate(toDate)
+        if buyValue is None or sellValue is None:
+            return None
+
+        return StockProfit(amount, buyValue, sellValue)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="app.model.stock_node.StockNode.addData"><code class="name flex">
+<span>def <span class="ident">addData</span></span>(<span>self, date, stock_value)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Add data to the stock node</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt>date
+(str):
+The date for the data</dt>
+<dt><strong><code>stock_value</code></strong> :&ensp;<a title="app.model.stock_node.StockValue" href="#app.model.stock_node.StockValue"><code>StockValue</code></a></dt>
+<dd>The StockValue for the data</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addData(self, date: str, stock_value):
+    &#39;&#39;&#39;
+        Add data to the stock node
+
+        Args:
+            date        (str):          The date for the data
+            stock_value (StockValue):   The StockValue for the data
+    &#39;&#39;&#39;
+    if date not in self.data:
+        self.data[date] = stock_value
+    else:
+        raise ValueError(&#34;No two entries can exist for the same date&#34;)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockNode.getAverageValues"><code class="name flex">
+<span>def <span class="ident">getAverageValues</span></span>(<span>self, fromDate, toDate)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Calculate the average values between two dates</p>
+<h2 id="args">Args</h2>
+<p>fromDate
+(str):
+The from (buy) date
+toDate
+(str):
+The to (sell) date</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><a title="app.model.stock_node.StockValue" href="#app.model.stock_node.StockValue"><code>StockValue</code></a></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getAverageValues(self, fromDate: str, toDate: str):
+    &#39;&#39;&#39;
+        Calculate the average values between two dates
+
+        Args:
+            fromDate    (str):  The from (buy) date
+            toDate      (str):  The to (sell) date
+
+        Returns:
+            StockValue
+    &#39;&#39;&#39;
+    currentDate = datetime.strptime(fromDate, Constants.PY_DATE_FORMAT)
+    endDate = datetime.strptime(toDate, Constants.PY_DATE_FORMAT)
+    # Create a time delta to iterate with
+    delta = timedelta(days=1)
+    totalCount = 0
+    open = 0.0
+    high = 0.0
+    low = 0.0
+    close = 0.0
+
+    while currentDate &lt; endDate:
+        node = self.getValueForDate(
+            currentDate.strftime(Constants.PY_DATE_FORMAT))
+        if node is not None:
+            totalCount += 1
+            open += node.getOpeningValue()
+            high += node.getHighValue()
+            low += node.getLowValue()
+            close = node.getCloseValue()
+        currentDate += delta
+    return StockValue(round(open / totalCount, 2),
+                      round(high / totalCount, 2),
+                      round(low / totalCount, 2),
+                      round(close / totalCount, 2))</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockNode.getLabel"><code class="name flex">
+<span>def <span class="ident">getLabel</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Return the label for the stock</p>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><code>str</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getLabel(self):
+    &#39;&#39;&#39;
+        Return the label for the stock
+
+        Returns:
+            str
+    &#39;&#39;&#39;
+    return self.label</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockNode.getProfitValue"><code class="name flex">
+<span>def <span class="ident">getProfitValue</span></span>(<span>self, amount, fromDate, toDate)</span>
+</code></dt>
+<dd>
+<section class="desc"></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getProfitValue(self, amount, fromDate, toDate):
+    buyValue = self.getValueForDate(fromDate)
+    sellValue = self.getValueForDate(toDate)
+    if buyValue is None or sellValue is None:
+        return None
+
+    return StockProfit(amount, buyValue, sellValue)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockNode.getValueForDate"><code class="name flex">
+<span>def <span class="ident">getValueForDate</span></span>(<span>self, date)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Return a stock value for a specific date</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>date</code></strong> :&ensp;<code>str</code></dt>
+<dd>The date to return the value for</dd>
+</dl>
+<h2 id="returns">Returns</h2>
+<dl>
+<dt><a title="app.model.stock_node.StockValue" href="#app.model.stock_node.StockValue"><code>StockValue</code></a> || <code>None</code></dt>
+<dd>&nbsp;</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getValueForDate(self, date: str):
+    &#39;&#39;&#39;
+        Return a stock value for a specific date
+
+        Args:
+            date (str): The date to return the value for
+
+        Returns:
+            StockValue || None
+    &#39;&#39;&#39;
+    if date in self.data:
+        return self.data[date]
+    return None</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="app.model.stock_node.StockProfit"><code class="flex name class">
+<span>class <span class="ident">StockProfit</span></span>
+<span>(</span><span>amount, buyValue=None, sellValue=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Stock profit class, used for profit related calculations</p>
+<p>Initialize the StockProfit class</p>
+<h2 id="args">Args</h2>
+<p>amount
+(int):
+The amount of stock
+buyValue
+(StockValue):
+The stock value on buy date
+sellValue
+(StockValue):
+The stock value on sell date</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StockProfit:
+    &#39;&#39;&#39;
+        Stock profit class, used for profit related calculations
+    &#39;&#39;&#39;
+    def __init__(self, amount: int, buyValue=None, sellValue=None):
+        &#39;&#39;&#39;
+            Initialize the StockProfit class
+
+            Args:
+                amount      (int):           The amount of stock
+                buyValue    (StockValue):    The stock value on buy date
+                sellValue   (StockValue):    The stock value on sell date
+        &#39;&#39;&#39;
+        self.multiplier = amount
+        self.buy = buyValue
+        self.sell = sellValue
+
+    @profitPreNoneCheck
+    def getLowestMargin(self):
+        &#39;&#39;&#39;
+            Returns the lowest profit
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round((self.sell.getLowValue() - self.buy.getHighValue()) *
+                     (self.multiplier / 1.0), 2)
+
+    @profitPreNoneCheck
+    def getHighestMargin(self):
+        &#39;&#39;&#39;
+            Returns the highest profit
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round((self.sell.getHighValue() - self.buy.getLowValue()) *
+                     (self.multiplier / 1.0), 2)
+
+    @profitPreNoneCheck
+    def getAverageMargin(self):
+        &#39;&#39;&#39;
+            Get the average profit
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round((self.getHighestMargin() + self.getLowestMargin()) / 2, 2)
+
+    @profitPreNoneCheck
+    def getLowestBuyPrice(self):
+        &#39;&#39;&#39;
+            Returns the lowest buy price
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round(self.buy.getLowValue() * self.multiplier, 2)
+
+    @profitPreNoneCheck
+    def getHighestBuyPrice(self):
+        &#39;&#39;&#39;
+            Returns the highest buy price
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round(self.buy.getHighValue() * self.multiplier, 2)
+
+    @profitPreNoneCheck
+    def getAverageBuyPrice(self):
+        &#39;&#39;&#39;
+            Returns the average buy price
+        &#39;&#39;&#39;
+        return round(
+            (self.getHighestBuyPrice() + self.getLowestBuyPrice()) / 2)
+
+    @profitPreNoneCheck
+    def getLowestSellPrice(self):
+        &#39;&#39;&#39;
+            Returns the lowest sell price
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round(self.sell.getLowValue() * self.multiplier, 2)
+
+    @profitPreNoneCheck
+    def getHighestSellPrice(self):
+        &#39;&#39;&#39;
+            Returns the highest sell price
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round(self.sell.getHighValue() * self.multiplier, 2)
+
+    @profitPreNoneCheck
+    def getAverageSellPrice(self):
+        &#39;&#39;&#39;
+            Returns the average sell price
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round(
+            (self.getHighestSellPrice() + self.getLowestSellPrice()) / 2)
+
+    @profitPreNoneCheck
+    def getPercentageGain(self):
+        &#39;&#39;&#39;
+            Returns the percentage gain between buy and sell
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return round((self.sell.getOHLCAverage() - self.buy.getOHLCAverage()) /
+                     self.buy.getOHLCAverage() * 100, 4)</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="app.model.stock_node.StockProfit.getAverageBuyPrice"><code class="name flex">
+<span>def <span class="ident">getAverageBuyPrice</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockProfit.getAverageMargin"><code class="name flex">
+<span>def <span class="ident">getAverageMargin</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockProfit.getAverageSellPrice"><code class="name flex">
+<span>def <span class="ident">getAverageSellPrice</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockProfit.getHighestBuyPrice"><code class="name flex">
+<span>def <span class="ident">getHighestBuyPrice</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockProfit.getHighestMargin"><code class="name flex">
+<span>def <span class="ident">getHighestMargin</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockProfit.getHighestSellPrice"><code class="name flex">
+<span>def <span class="ident">getHighestSellPrice</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockProfit.getLowestBuyPrice"><code class="name flex">
+<span>def <span class="ident">getLowestBuyPrice</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockProfit.getLowestMargin"><code class="name flex">
+<span>def <span class="ident">getLowestMargin</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockProfit.getLowestSellPrice"><code class="name flex">
+<span>def <span class="ident">getLowestSellPrice</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockProfit.getPercentageGain"><code class="name flex">
+<span>def <span class="ident">getPercentageGain</span></span>(<span>self, *args, **kwargs)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Decorator function (with instance)</p>
+<h2 id="args">Args</h2>
+<p>self
+(self):
+A class instance
+<em>args
+(args):
+Unnamed args
+</em>*kwargs
+(kwargs):
+Keyed args</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def decorator(self, *args, **kwargs):
+    &#39;&#39;&#39;
+        Decorator function (with instance)
+
+        Args:
+            self        (self):     A class instance
+            *args       (args):     Unnamed args
+            **kwargs    (kwargs):   Keyed args
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    if self.buy is None or self.sell is None:
+        return 0.0
+    return func(self, *args, **kwargs)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="app.model.stock_node.StockValue"><code class="flex name class">
+<span>class <span class="ident">StockValue</span></span>
+<span>(</span><span>open, high, low, close)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Stock value represents the value for a stock on a given day</p>
+<h2 id="args">Args</h2>
+<p>open
+(float): The opening price on the given date
+high
+(float): The high price on the given date
+low
+(float): The low price on the given date
+close
+(float): The close price on the given date</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class StockValue:
+    &#39;&#39;&#39;
+        Stock value represents the value for a stock on a given day
+
+        Args:
+            open    (float): The opening price on the given date
+            high    (float): The high price on the given date
+            low     (float): The low price on the given date
+            close   (float): The close price on the given date
+    &#39;&#39;&#39;
+    def __init__(self, open: float, high: float, low: float, close: float):
+        self.open = open
+        self.high = high
+        self.low = low
+        self.close = close
+
+    def getCloseValue(self):
+        &#39;&#39;&#39;
+            Getter for close value
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return self.close
+
+    def getHighValue(self):
+        &#39;&#39;&#39;
+            Getter for high value
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return self.high
+
+    def getLowValue(self):
+        &#39;&#39;&#39;
+            Getter for low value
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return self.low
+
+    def getOpeningValue(self):
+        &#39;&#39;&#39;
+            Getter for opening value
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return self.open
+
+    def getDayDiff(self):
+        &#39;&#39;&#39;
+            Determine the difference between the close and open
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return self.close - self.open
+
+    def getHighLowDiff(self):
+        &#39;&#39;&#39;
+            Determine the difference between the high and low
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return self.high - self.low
+
+    def getOHLCAverage(self):
+        &#39;&#39;&#39;
+            Determine the OHLC average and return this
+
+            Returns:
+                (float)
+        &#39;&#39;&#39;
+        return (self.open + self.high + self.low + self.close) / 4</code></pre>
+</details>
+<h3>Methods</h3>
+<dl>
+<dt id="app.model.stock_node.StockValue.getCloseValue"><code class="name flex">
+<span>def <span class="ident">getCloseValue</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Getter for close value</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getCloseValue(self):
+    &#39;&#39;&#39;
+        Getter for close value
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    return self.close</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockValue.getDayDiff"><code class="name flex">
+<span>def <span class="ident">getDayDiff</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Determine the difference between the close and open</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getDayDiff(self):
+    &#39;&#39;&#39;
+        Determine the difference between the close and open
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    return self.close - self.open</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockValue.getHighLowDiff"><code class="name flex">
+<span>def <span class="ident">getHighLowDiff</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Determine the difference between the high and low</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getHighLowDiff(self):
+    &#39;&#39;&#39;
+        Determine the difference between the high and low
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    return self.high - self.low</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockValue.getHighValue"><code class="name flex">
+<span>def <span class="ident">getHighValue</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Getter for high value</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getHighValue(self):
+    &#39;&#39;&#39;
+        Getter for high value
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    return self.high</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockValue.getLowValue"><code class="name flex">
+<span>def <span class="ident">getLowValue</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Getter for low value</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getLowValue(self):
+    &#39;&#39;&#39;
+        Getter for low value
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    return self.low</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockValue.getOHLCAverage"><code class="name flex">
+<span>def <span class="ident">getOHLCAverage</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Determine the OHLC average and return this</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getOHLCAverage(self):
+    &#39;&#39;&#39;
+        Determine the OHLC average and return this
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    return (self.open + self.high + self.low + self.close) / 4</code></pre>
+</details>
+</dd>
+<dt id="app.model.stock_node.StockValue.getOpeningValue"><code class="name flex">
+<span>def <span class="ident">getOpeningValue</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Getter for opening value</p>
+<h2 id="returns">Returns</h2>
+<p>(float)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getOpeningValue(self):
+    &#39;&#39;&#39;
+        Getter for opening value
+
+        Returns:
+            (float)
+    &#39;&#39;&#39;
+    return self.open</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="app.model" href="index.html">app.model</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="app.model.stock_node.profitPreNoneCheck" href="#app.model.stock_node.profitPreNoneCheck">profitPreNoneCheck</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="app.model.stock_node.StockNode" href="#app.model.stock_node.StockNode">StockNode</a></code></h4>
+<ul class="">
+<li><code><a title="app.model.stock_node.StockNode.addData" href="#app.model.stock_node.StockNode.addData">addData</a></code></li>
+<li><code><a title="app.model.stock_node.StockNode.getAverageValues" href="#app.model.stock_node.StockNode.getAverageValues">getAverageValues</a></code></li>
+<li><code><a title="app.model.stock_node.StockNode.getLabel" href="#app.model.stock_node.StockNode.getLabel">getLabel</a></code></li>
+<li><code><a title="app.model.stock_node.StockNode.getProfitValue" href="#app.model.stock_node.StockNode.getProfitValue">getProfitValue</a></code></li>
+<li><code><a title="app.model.stock_node.StockNode.getValueForDate" href="#app.model.stock_node.StockNode.getValueForDate">getValueForDate</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="app.model.stock_node.StockProfit" href="#app.model.stock_node.StockProfit">StockProfit</a></code></h4>
+<ul class="two-column">
+<li><code><a title="app.model.stock_node.StockProfit.getAverageBuyPrice" href="#app.model.stock_node.StockProfit.getAverageBuyPrice">getAverageBuyPrice</a></code></li>
+<li><code><a title="app.model.stock_node.StockProfit.getAverageMargin" href="#app.model.stock_node.StockProfit.getAverageMargin">getAverageMargin</a></code></li>
+<li><code><a title="app.model.stock_node.StockProfit.getAverageSellPrice" href="#app.model.stock_node.StockProfit.getAverageSellPrice">getAverageSellPrice</a></code></li>
+<li><code><a title="app.model.stock_node.StockProfit.getHighestBuyPrice" href="#app.model.stock_node.StockProfit.getHighestBuyPrice">getHighestBuyPrice</a></code></li>
+<li><code><a title="app.model.stock_node.StockProfit.getHighestMargin" href="#app.model.stock_node.StockProfit.getHighestMargin">getHighestMargin</a></code></li>
+<li><code><a title="app.model.stock_node.StockProfit.getHighestSellPrice" href="#app.model.stock_node.StockProfit.getHighestSellPrice">getHighestSellPrice</a></code></li>
+<li><code><a title="app.model.stock_node.StockProfit.getLowestBuyPrice" href="#app.model.stock_node.StockProfit.getLowestBuyPrice">getLowestBuyPrice</a></code></li>
+<li><code><a title="app.model.stock_node.StockProfit.getLowestMargin" href="#app.model.stock_node.StockProfit.getLowestMargin">getLowestMargin</a></code></li>
+<li><code><a title="app.model.stock_node.StockProfit.getLowestSellPrice" href="#app.model.stock_node.StockProfit.getLowestSellPrice">getLowestSellPrice</a></code></li>
+<li><code><a title="app.model.stock_node.StockProfit.getPercentageGain" href="#app.model.stock_node.StockProfit.getPercentageGain">getPercentageGain</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="app.model.stock_node.StockValue" href="#app.model.stock_node.StockValue">StockValue</a></code></h4>
+<ul class="two-column">
+<li><code><a title="app.model.stock_node.StockValue.getCloseValue" href="#app.model.stock_node.StockValue.getCloseValue">getCloseValue</a></code></li>
+<li><code><a title="app.model.stock_node.StockValue.getDayDiff" href="#app.model.stock_node.StockValue.getDayDiff">getDayDiff</a></code></li>
+<li><code><a title="app.model.stock_node.StockValue.getHighLowDiff" href="#app.model.stock_node.StockValue.getHighLowDiff">getHighLowDiff</a></code></li>
+<li><code><a title="app.model.stock_node.StockValue.getHighValue" href="#app.model.stock_node.StockValue.getHighValue">getHighValue</a></code></li>
+<li><code><a title="app.model.stock_node.StockValue.getLowValue" href="#app.model.stock_node.StockValue.getLowValue">getLowValue</a></code></li>
+<li><code><a title="app.model.stock_node.StockValue.getOHLCAverage" href="#app.model.stock_node.StockValue.getOHLCAverage">getOHLCAverage</a></code></li>
+<li><code><a title="app.model.stock_node.StockValue.getOpeningValue" href="#app.model.stock_node.StockValue.getOpeningValue">getOpeningValue</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

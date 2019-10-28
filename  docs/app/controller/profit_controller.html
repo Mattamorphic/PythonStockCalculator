@@ -1,0 +1,623 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.1" />
+<title>app.controller.profit_controller API documentation</title>
+<meta name="description" content="Profit Controller
+Controller for the profitt widget …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>app.controller.profit_controller</code></h1>
+</header>
+<section id="section-intro">
+<p>Profit Controller
+Controller for the profitt widget</p>
+<h2 id="author">Author</h2>
+<p>Matthew Barber <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#102;&#109;&#98;&#97;&#114;&#98;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#109;&#102;&#109;&#98;&#97;&#114;&#98;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#39;&#39;&#39;
+    Profit Controller
+    Controller for the profitt widget
+
+    Author:
+        Matthew Barber &lt;mfmbarber@gmail.com&gt;
+&#39;&#39;&#39;
+from app.view.components.profit import (StockProfitValueData)
+from app.view.components.stock import (StockSelector)
+from app.view.layouts import ProfitLayout
+from PyQt5.QtWidgets import QWidget
+
+
+class ProfitController(QWidget):
+    def __init__(self,
+                 multiplier,
+                 fromDateString,
+                 toDateString,
+                 stockNodes=[],
+                 selectedStock=None,
+                 parent=None):
+        &#39;&#39;&#39;
+            Initialize the controller and set the instance variables
+
+            Args:
+                multiplier      (int):              The amount of stock units
+                fromDateString  (str):              The from (buy) date
+                toDateString    (str):              The to (sell) date
+                stockNodes      (List[StockNode]):  All of the selected nodes
+                selectedStock   (StockNode):        The node we are analysing
+        &#39;&#39;&#39;
+        super().__init__(parent)
+        self.multiplier = multiplier
+        self.fromDate = fromDateString
+        self.toDate = toDateString
+        self.stockNodes = stockNodes
+        self.selectedStock = selectedStock
+        self.initUI()
+
+    def initUI(self):
+        &#39;&#39;&#39;
+            Initializes the UI
+        &#39;&#39;&#39;
+        selectedStockLabels = [node.getLabel() for node in self.stockNodes]
+        self.stockSelectorComponent = StockSelector(selectedStockLabels)
+        self.stockSelectorComponent.onChange.connect(
+            self.updateSelectedStockByLabel)
+
+        self.profitValue = StockProfitValueData(self.getStockProfit())
+
+        layout = ProfitLayout(self.stockSelectorComponent, self.profitValue)
+        self.setLayout(layout)
+
+    def getStockProfit(self):
+        &#39;&#39;&#39;
+            A wrapper to get the profit value from either the current node
+            or an empty value
+
+            Returns:
+                (StockProfit)
+        &#39;&#39;&#39;
+        empty = StockProfitValueData.createEmptyValue()
+        if self.selectedStock is None:
+            return empty
+        profitValue = self.selectedStock.getProfitValue(
+            self.multiplier, self.fromDate, self.toDate)
+        return empty if profitValue is None else profitValue
+
+    def updateProfitDetails(self):
+        &#39;&#39;&#39;
+            Update the profit values component
+        &#39;&#39;&#39;
+        self.profitValue.updateProfitValues(self.getStockProfit())
+
+    def updateMultiplier(self, multiplier: int):
+        &#39;&#39;&#39;
+            Setter for multiplier instance variable
+
+            Args:
+                multiplier (int): The amount of stock to purchase
+        &#39;&#39;&#39;
+        self.multiplier = multiplier
+        self.updateProfitDetails()
+
+    def updateSelectedStock(self, node):
+        &#39;&#39;&#39;
+            Updated the current stock node being analysed
+
+            Args:
+                node (StockNode): The node being analysed
+        &#39;&#39;&#39;
+        self.selectedStock = node
+        self.updateProfitDetails()
+
+    def updateSelectedStockByLabel(self, label: str):
+        &#39;&#39;&#39;
+            Given a label, find this in all our potentoal nodes, and update
+            the selectedStock instance variable
+
+            Args:
+                label (str): The label for a stock
+        &#39;&#39;&#39;
+        node = next(
+            (node for node in self.stockNodes if node.getLabel() == label),
+            None)
+        if node is not None:
+            self.updateSelectedStock(node)
+
+    def updateFromDate(self, fromDate: str):
+        &#39;&#39;&#39;
+            Update the fromDate in our analysis
+
+            Args:
+                fromDate (str): The from (buy) date
+        &#39;&#39;&#39;
+        self.fromDate = fromDate
+        self.updateProfitDetails()
+
+    def updateToDate(self, toDate: str):
+        &#39;&#39;&#39;
+            Update the toDate in our analysis
+
+            Args:
+                toDate (str):  The to (sell) date
+        &#39;&#39;&#39;
+        self.toDate = toDate
+        self.updateProfitDetails()
+
+    def updateStockNodes(self, stockNodes):
+        &#39;&#39;&#39;
+            Update all the stock nodes that we can analyse
+
+            Args:
+                stockNodes (List[StockNode]): The potential stock nodes to analyse
+        &#39;&#39;&#39;
+        self.stockNodes = stockNodes
+        self.stockSelectorComponent.updateValues(
+            [node.getLabel() for node in self.stockNodes])
+        if stockNodes:
+            self.updateSelectedStock(self.stockNodes[0])
+        else:
+            self.updateSelectedStock(None)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="app.controller.profit_controller.ProfitController"><code class="flex name class">
+<span>class <span class="ident">ProfitController</span></span>
+<span>(</span><span>multiplier, fromDateString, toDateString, stockNodes=[], selectedStock=None, parent=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>QWidget(parent: QWidget = None, flags: Union[Qt.WindowFlags, Qt.WindowType] = Qt.WindowFlags())</p>
+<p>Initialize the controller and set the instance variables</p>
+<h2 id="args">Args</h2>
+<p>multiplier
+(int):
+The amount of stock units
+fromDateString
+(str):
+The from (buy) date
+toDateString
+(str):
+The to (sell) date
+stockNodes
+(List[StockNode]):
+All of the selected nodes
+selectedStock
+(StockNode):
+The node we are analysing</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ProfitController(QWidget):
+    def __init__(self,
+                 multiplier,
+                 fromDateString,
+                 toDateString,
+                 stockNodes=[],
+                 selectedStock=None,
+                 parent=None):
+        &#39;&#39;&#39;
+            Initialize the controller and set the instance variables
+
+            Args:
+                multiplier      (int):              The amount of stock units
+                fromDateString  (str):              The from (buy) date
+                toDateString    (str):              The to (sell) date
+                stockNodes      (List[StockNode]):  All of the selected nodes
+                selectedStock   (StockNode):        The node we are analysing
+        &#39;&#39;&#39;
+        super().__init__(parent)
+        self.multiplier = multiplier
+        self.fromDate = fromDateString
+        self.toDate = toDateString
+        self.stockNodes = stockNodes
+        self.selectedStock = selectedStock
+        self.initUI()
+
+    def initUI(self):
+        &#39;&#39;&#39;
+            Initializes the UI
+        &#39;&#39;&#39;
+        selectedStockLabels = [node.getLabel() for node in self.stockNodes]
+        self.stockSelectorComponent = StockSelector(selectedStockLabels)
+        self.stockSelectorComponent.onChange.connect(
+            self.updateSelectedStockByLabel)
+
+        self.profitValue = StockProfitValueData(self.getStockProfit())
+
+        layout = ProfitLayout(self.stockSelectorComponent, self.profitValue)
+        self.setLayout(layout)
+
+    def getStockProfit(self):
+        &#39;&#39;&#39;
+            A wrapper to get the profit value from either the current node
+            or an empty value
+
+            Returns:
+                (StockProfit)
+        &#39;&#39;&#39;
+        empty = StockProfitValueData.createEmptyValue()
+        if self.selectedStock is None:
+            return empty
+        profitValue = self.selectedStock.getProfitValue(
+            self.multiplier, self.fromDate, self.toDate)
+        return empty if profitValue is None else profitValue
+
+    def updateProfitDetails(self):
+        &#39;&#39;&#39;
+            Update the profit values component
+        &#39;&#39;&#39;
+        self.profitValue.updateProfitValues(self.getStockProfit())
+
+    def updateMultiplier(self, multiplier: int):
+        &#39;&#39;&#39;
+            Setter for multiplier instance variable
+
+            Args:
+                multiplier (int): The amount of stock to purchase
+        &#39;&#39;&#39;
+        self.multiplier = multiplier
+        self.updateProfitDetails()
+
+    def updateSelectedStock(self, node):
+        &#39;&#39;&#39;
+            Updated the current stock node being analysed
+
+            Args:
+                node (StockNode): The node being analysed
+        &#39;&#39;&#39;
+        self.selectedStock = node
+        self.updateProfitDetails()
+
+    def updateSelectedStockByLabel(self, label: str):
+        &#39;&#39;&#39;
+            Given a label, find this in all our potentoal nodes, and update
+            the selectedStock instance variable
+
+            Args:
+                label (str): The label for a stock
+        &#39;&#39;&#39;
+        node = next(
+            (node for node in self.stockNodes if node.getLabel() == label),
+            None)
+        if node is not None:
+            self.updateSelectedStock(node)
+
+    def updateFromDate(self, fromDate: str):
+        &#39;&#39;&#39;
+            Update the fromDate in our analysis
+
+            Args:
+                fromDate (str): The from (buy) date
+        &#39;&#39;&#39;
+        self.fromDate = fromDate
+        self.updateProfitDetails()
+
+    def updateToDate(self, toDate: str):
+        &#39;&#39;&#39;
+            Update the toDate in our analysis
+
+            Args:
+                toDate (str):  The to (sell) date
+        &#39;&#39;&#39;
+        self.toDate = toDate
+        self.updateProfitDetails()
+
+    def updateStockNodes(self, stockNodes):
+        &#39;&#39;&#39;
+            Update all the stock nodes that we can analyse
+
+            Args:
+                stockNodes (List[StockNode]): The potential stock nodes to analyse
+        &#39;&#39;&#39;
+        self.stockNodes = stockNodes
+        self.stockSelectorComponent.updateValues(
+            [node.getLabel() for node in self.stockNodes])
+        if stockNodes:
+            self.updateSelectedStock(self.stockNodes[0])
+        else:
+            self.updateSelectedStock(None)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt5.QtWidgets.QWidget</li>
+<li>PyQt5.QtCore.QObject</li>
+<li>sip.wrapper</li>
+<li>PyQt5.QtGui.QPaintDevice</li>
+<li>sip.simplewrapper</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="app.controller.profit_controller.ProfitController.getStockProfit"><code class="name flex">
+<span>def <span class="ident">getStockProfit</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A wrapper to get the profit value from either the current node
+or an empty value</p>
+<h2 id="returns">Returns</h2>
+<p>(StockProfit)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def getStockProfit(self):
+    &#39;&#39;&#39;
+        A wrapper to get the profit value from either the current node
+        or an empty value
+
+        Returns:
+            (StockProfit)
+    &#39;&#39;&#39;
+    empty = StockProfitValueData.createEmptyValue()
+    if self.selectedStock is None:
+        return empty
+    profitValue = self.selectedStock.getProfitValue(
+        self.multiplier, self.fromDate, self.toDate)
+    return empty if profitValue is None else profitValue</code></pre>
+</details>
+</dd>
+<dt id="app.controller.profit_controller.ProfitController.initUI"><code class="name flex">
+<span>def <span class="ident">initUI</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Initializes the UI</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def initUI(self):
+    &#39;&#39;&#39;
+        Initializes the UI
+    &#39;&#39;&#39;
+    selectedStockLabels = [node.getLabel() for node in self.stockNodes]
+    self.stockSelectorComponent = StockSelector(selectedStockLabels)
+    self.stockSelectorComponent.onChange.connect(
+        self.updateSelectedStockByLabel)
+
+    self.profitValue = StockProfitValueData(self.getStockProfit())
+
+    layout = ProfitLayout(self.stockSelectorComponent, self.profitValue)
+    self.setLayout(layout)</code></pre>
+</details>
+</dd>
+<dt id="app.controller.profit_controller.ProfitController.updateFromDate"><code class="name flex">
+<span>def <span class="ident">updateFromDate</span></span>(<span>self, fromDate)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update the fromDate in our analysis</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>fromDate</code></strong> :&ensp;<code>str</code></dt>
+<dd>The from (buy) date</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateFromDate(self, fromDate: str):
+    &#39;&#39;&#39;
+        Update the fromDate in our analysis
+
+        Args:
+            fromDate (str): The from (buy) date
+    &#39;&#39;&#39;
+    self.fromDate = fromDate
+    self.updateProfitDetails()</code></pre>
+</details>
+</dd>
+<dt id="app.controller.profit_controller.ProfitController.updateMultiplier"><code class="name flex">
+<span>def <span class="ident">updateMultiplier</span></span>(<span>self, multiplier)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Setter for multiplier instance variable</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>multiplier</code></strong> :&ensp;<code>int</code></dt>
+<dd>The amount of stock to purchase</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateMultiplier(self, multiplier: int):
+    &#39;&#39;&#39;
+        Setter for multiplier instance variable
+
+        Args:
+            multiplier (int): The amount of stock to purchase
+    &#39;&#39;&#39;
+    self.multiplier = multiplier
+    self.updateProfitDetails()</code></pre>
+</details>
+</dd>
+<dt id="app.controller.profit_controller.ProfitController.updateProfitDetails"><code class="name flex">
+<span>def <span class="ident">updateProfitDetails</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update the profit values component</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateProfitDetails(self):
+    &#39;&#39;&#39;
+        Update the profit values component
+    &#39;&#39;&#39;
+    self.profitValue.updateProfitValues(self.getStockProfit())</code></pre>
+</details>
+</dd>
+<dt id="app.controller.profit_controller.ProfitController.updateSelectedStock"><code class="name flex">
+<span>def <span class="ident">updateSelectedStock</span></span>(<span>self, node)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Updated the current stock node being analysed</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>node</code></strong> :&ensp;<code>StockNode</code></dt>
+<dd>The node being analysed</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateSelectedStock(self, node):
+    &#39;&#39;&#39;
+        Updated the current stock node being analysed
+
+        Args:
+            node (StockNode): The node being analysed
+    &#39;&#39;&#39;
+    self.selectedStock = node
+    self.updateProfitDetails()</code></pre>
+</details>
+</dd>
+<dt id="app.controller.profit_controller.ProfitController.updateSelectedStockByLabel"><code class="name flex">
+<span>def <span class="ident">updateSelectedStockByLabel</span></span>(<span>self, label)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Given a label, find this in all our potentoal nodes, and update
+the selectedStock instance variable</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>label</code></strong> :&ensp;<code>str</code></dt>
+<dd>The label for a stock</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateSelectedStockByLabel(self, label: str):
+    &#39;&#39;&#39;
+        Given a label, find this in all our potentoal nodes, and update
+        the selectedStock instance variable
+
+        Args:
+            label (str): The label for a stock
+    &#39;&#39;&#39;
+    node = next(
+        (node for node in self.stockNodes if node.getLabel() == label),
+        None)
+    if node is not None:
+        self.updateSelectedStock(node)</code></pre>
+</details>
+</dd>
+<dt id="app.controller.profit_controller.ProfitController.updateStockNodes"><code class="name flex">
+<span>def <span class="ident">updateStockNodes</span></span>(<span>self, stockNodes)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update all the stock nodes that we can analyse</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>stockNodes</code></strong> :&ensp;<code>List</code>[<code>StockNode</code>]</dt>
+<dd>The potential stock nodes to analyse</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateStockNodes(self, stockNodes):
+    &#39;&#39;&#39;
+        Update all the stock nodes that we can analyse
+
+        Args:
+            stockNodes (List[StockNode]): The potential stock nodes to analyse
+    &#39;&#39;&#39;
+    self.stockNodes = stockNodes
+    self.stockSelectorComponent.updateValues(
+        [node.getLabel() for node in self.stockNodes])
+    if stockNodes:
+        self.updateSelectedStock(self.stockNodes[0])
+    else:
+        self.updateSelectedStock(None)</code></pre>
+</details>
+</dd>
+<dt id="app.controller.profit_controller.ProfitController.updateToDate"><code class="name flex">
+<span>def <span class="ident">updateToDate</span></span>(<span>self, toDate)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update the toDate in our analysis</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>toDate</code></strong> :&ensp;<code>str</code></dt>
+<dd>The to (sell) date</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateToDate(self, toDate: str):
+    &#39;&#39;&#39;
+        Update the toDate in our analysis
+
+        Args:
+            toDate (str):  The to (sell) date
+    &#39;&#39;&#39;
+    self.toDate = toDate
+    self.updateProfitDetails()</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="app.controller" href="index.html">app.controller</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="app.controller.profit_controller.ProfitController" href="#app.controller.profit_controller.ProfitController">ProfitController</a></code></h4>
+<ul class="">
+<li><code><a title="app.controller.profit_controller.ProfitController.getStockProfit" href="#app.controller.profit_controller.ProfitController.getStockProfit">getStockProfit</a></code></li>
+<li><code><a title="app.controller.profit_controller.ProfitController.initUI" href="#app.controller.profit_controller.ProfitController.initUI">initUI</a></code></li>
+<li><code><a title="app.controller.profit_controller.ProfitController.updateFromDate" href="#app.controller.profit_controller.ProfitController.updateFromDate">updateFromDate</a></code></li>
+<li><code><a title="app.controller.profit_controller.ProfitController.updateMultiplier" href="#app.controller.profit_controller.ProfitController.updateMultiplier">updateMultiplier</a></code></li>
+<li><code><a title="app.controller.profit_controller.ProfitController.updateProfitDetails" href="#app.controller.profit_controller.ProfitController.updateProfitDetails">updateProfitDetails</a></code></li>
+<li><code><a title="app.controller.profit_controller.ProfitController.updateSelectedStock" href="#app.controller.profit_controller.ProfitController.updateSelectedStock">updateSelectedStock</a></code></li>
+<li><code><a title="app.controller.profit_controller.ProfitController.updateSelectedStockByLabel" href="#app.controller.profit_controller.ProfitController.updateSelectedStockByLabel">updateSelectedStockByLabel</a></code></li>
+<li><code><a title="app.controller.profit_controller.ProfitController.updateStockNodes" href="#app.controller.profit_controller.ProfitController.updateStockNodes">updateStockNodes</a></code></li>
+<li><code><a title="app.controller.profit_controller.ProfitController.updateToDate" href="#app.controller.profit_controller.ProfitController.updateToDate">updateToDate</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>

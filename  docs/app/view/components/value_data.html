@@ -1,0 +1,701 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.7.1" />
+<title>app.view.components.value_data API documentation</title>
+<meta name="description" content="Value Data
+Render key value pair data …" />
+<link href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css' rel='stylesheet'>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/8.0.0/sanitize.min.css' rel='stylesheet'>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" rel="stylesheet">
+<style>.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{font-weight:bold}#index h4 + ul{margin-bottom:.6em}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>app.view.components.value_data</code></h1>
+</header>
+<section id="section-intro">
+<p>Value Data
+Render key value pair data</p>
+<h2 id="author">Author</h2>
+<p>Matthew Barber <a href="&#109;&#97;&#105;&#108;&#116;&#111;&#58;&#109;&#102;&#109;&#98;&#97;&#114;&#98;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;">&#109;&#102;&#109;&#98;&#97;&#114;&#98;&#101;&#114;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</a></p>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">&#39;&#39;&#39;
+    Value Data
+    Render key value pair data
+
+    Author:
+        Matthew Barber &lt;mfmbarber@gmail.com&gt;
+&#39;&#39;&#39;
+from PyQt5.QtCore import Qt
+from PyQt5.QtWidgets import (
+    QFormLayout,
+    QGroupBox,
+    QLineEdit,
+    QHBoxLayout,
+    QSizePolicy,
+)
+
+
+class ValueData(QHBoxLayout):
+    &#39;&#39;&#39;
+        ValueData
+
+        Args:
+            Label (str): A label for the group of data
+    &#39;&#39;&#39;
+    def __init__(self, label=None, parent=None):
+        super().__init__(parent)
+        self.groups = []
+        self.groupIndex = 0
+        self.addColumn(label)
+
+    def addColumn(self, label=None):
+        &#39;&#39;&#39;
+            Add a column of data
+
+            Args:
+                label (str): The label to add to this column
+        &#39;&#39;&#39;
+        group = QGroupBox(label)
+        innerGroup = QFormLayout()
+        innerGroup.setAlignment(Qt.AlignTop)
+        group.setLayout(innerGroup)
+        group.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        self.addWidget(group)
+        self.groups.append(innerGroup)
+        self.groupIndex = len(self.groups) - 1
+
+    def addRow(self, name: str, value):
+        &#39;&#39;&#39;
+            Add a row to the current column, with a name and value
+
+            Args:
+                name    (str): A name for this row as a label
+                value   (mixed): A value for this data
+        &#39;&#39;&#39;
+        value = Value(str(value))
+        self.groups[self.groupIndex].addRow(
+            name + &#34; &#34; if name[-1] != &#39; &#39; else name, value)
+        value.setReadOnly(True)
+        return value
+
+    def done(self):
+        &#39;&#39;&#39;
+            A final method, that removes the whitespace
+        &#39;&#39;&#39;
+        self.addStretch(0)
+        return self
+
+
+class Value(QLineEdit):
+    &#39;&#39;&#39;
+        Helper method to gracefully wrap value
+
+        Args:
+            value (mixed):      A value
+            isReadOnly (bool):  Can this value be modified?
+    &#39;&#39;&#39;
+    def __init__(self, value, isReadOnly: bool = True, parent=None):
+        super().__init__(str(value), parent)
+        self.setReadOnly(isReadOnly)
+
+    def updateValue(self, value):
+        &#39;&#39;&#39;
+            Update the value
+
+            Args:
+                value (mixed): The value to update with
+        &#39;&#39;&#39;
+        self.setText(str(value))
+
+
+class BaseValue:
+    &#39;&#39;&#39;
+        Base class for custom values
+
+        Args:
+            value (mixed): The value
+    &#39;&#39;&#39;
+    typeCheckers = []
+
+    def __init__(self, value):
+        self.value = value
+
+    def isValueValid(self):
+        &#39;&#39;&#39;
+            Validate the value against the type checkers
+
+            Returns:
+                (bool)
+        &#39;&#39;&#39;
+        return any([check(self.value) for check in self.typeCheckers])
+
+
+class CurrencyValue(BaseValue):
+    &#39;&#39;&#39;
+        Currency value class
+
+        Args:
+            symbol (str): Currency symbol
+            value (float/int): The currency value
+    &#39;&#39;&#39;
+
+    # Numerical type checkers
+    typeCheckers = [
+        lambda v: isinstance(v, int), lambda v: isinstance(v, float)
+    ]
+
+    def __init__(self, symbol, value):
+        super().__init__(value)
+        self.symbol = symbol
+
+    def __str__(self):
+        &#39;&#39;&#39;
+            Magic method (for str(...) calls)
+
+            Returns:
+                (str)
+        &#39;&#39;&#39;
+        if not self.isValueValid():
+            return str(self.value)
+        return self.symbol + str(&#34;{:,}&#34;.format(round(float(self.value), 2)))
+
+
+class PercentageValue(BaseValue):
+    &#39;&#39;&#39;
+        Percentage value class
+
+        Args:
+            value (float/int): The Percentage value
+    &#39;&#39;&#39;
+    typeCheckers = [
+        lambda v: isinstance(v, int), lambda v: isinstance(v, float)
+    ]
+    symbol = &#39;%&#39;
+
+    def __init__(self, value):
+        super().__init__(value)
+
+    def __str__(self):
+        &#39;&#39;&#39;
+            Magic method (for str(...) calls)
+
+            Returns:
+                (str)
+        &#39;&#39;&#39;
+        if not self.isValueValid():
+            return str(self.value)
+        return str(self.value) + self.symbol</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="app.view.components.value_data.BaseValue"><code class="flex name class">
+<span>class <span class="ident">BaseValue</span></span>
+<span>(</span><span>value)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Base class for custom values</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>value</code></strong> :&ensp;<code>mixed</code></dt>
+<dd>The value</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class BaseValue:
+    &#39;&#39;&#39;
+        Base class for custom values
+
+        Args:
+            value (mixed): The value
+    &#39;&#39;&#39;
+    typeCheckers = []
+
+    def __init__(self, value):
+        self.value = value
+
+    def isValueValid(self):
+        &#39;&#39;&#39;
+            Validate the value against the type checkers
+
+            Returns:
+                (bool)
+        &#39;&#39;&#39;
+        return any([check(self.value) for check in self.typeCheckers])</code></pre>
+</details>
+<h3>Subclasses</h3>
+<ul class="hlist">
+<li><a title="app.view.components.value_data.CurrencyValue" href="#app.view.components.value_data.CurrencyValue">CurrencyValue</a></li>
+<li><a title="app.view.components.value_data.PercentageValue" href="#app.view.components.value_data.PercentageValue">PercentageValue</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="app.view.components.value_data.BaseValue.typeCheckers"><code class="name">var <span class="ident">typeCheckers</span></code></dt>
+<dd>
+<section class="desc"><p>Built-in mutable sequence.</p>
+<p>If no argument is given, the constructor creates a new empty list.
+The argument must be an iterable if specified.</p></section>
+</dd>
+</dl>
+<h3>Methods</h3>
+<dl>
+<dt id="app.view.components.value_data.BaseValue.isValueValid"><code class="name flex">
+<span>def <span class="ident">isValueValid</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Validate the value against the type checkers</p>
+<h2 id="returns">Returns</h2>
+<p>(bool)</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def isValueValid(self):
+    &#39;&#39;&#39;
+        Validate the value against the type checkers
+
+        Returns:
+            (bool)
+    &#39;&#39;&#39;
+    return any([check(self.value) for check in self.typeCheckers])</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="app.view.components.value_data.CurrencyValue"><code class="flex name class">
+<span>class <span class="ident">CurrencyValue</span></span>
+<span>(</span><span>symbol, value)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Currency value class</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>symbol</code></strong> :&ensp;<code>str</code></dt>
+<dd>Currency symbol</dd>
+</dl>
+<p>value (float/int): The currency value</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class CurrencyValue(BaseValue):
+    &#39;&#39;&#39;
+        Currency value class
+
+        Args:
+            symbol (str): Currency symbol
+            value (float/int): The currency value
+    &#39;&#39;&#39;
+
+    # Numerical type checkers
+    typeCheckers = [
+        lambda v: isinstance(v, int), lambda v: isinstance(v, float)
+    ]
+
+    def __init__(self, symbol, value):
+        super().__init__(value)
+        self.symbol = symbol
+
+    def __str__(self):
+        &#39;&#39;&#39;
+            Magic method (for str(...) calls)
+
+            Returns:
+                (str)
+        &#39;&#39;&#39;
+        if not self.isValueValid():
+            return str(self.value)
+        return self.symbol + str(&#34;{:,}&#34;.format(round(float(self.value), 2)))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="app.view.components.value_data.BaseValue" href="#app.view.components.value_data.BaseValue">BaseValue</a></li>
+</ul>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="app.view.components.value_data.BaseValue" href="#app.view.components.value_data.BaseValue">BaseValue</a></b></code>:
+<ul class="hlist">
+<li><code><a title="app.view.components.value_data.BaseValue.isValueValid" href="#app.view.components.value_data.BaseValue.isValueValid">isValueValid</a></code></li>
+<li><code><a title="app.view.components.value_data.BaseValue.typeCheckers" href="#app.view.components.value_data.BaseValue.typeCheckers">typeCheckers</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="app.view.components.value_data.PercentageValue"><code class="flex name class">
+<span>class <span class="ident">PercentageValue</span></span>
+<span>(</span><span>value)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Percentage value class</p>
+<h2 id="args">Args</h2>
+<p>value (float/int): The Percentage value</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class PercentageValue(BaseValue):
+    &#39;&#39;&#39;
+        Percentage value class
+
+        Args:
+            value (float/int): The Percentage value
+    &#39;&#39;&#39;
+    typeCheckers = [
+        lambda v: isinstance(v, int), lambda v: isinstance(v, float)
+    ]
+    symbol = &#39;%&#39;
+
+    def __init__(self, value):
+        super().__init__(value)
+
+    def __str__(self):
+        &#39;&#39;&#39;
+            Magic method (for str(...) calls)
+
+            Returns:
+                (str)
+        &#39;&#39;&#39;
+        if not self.isValueValid():
+            return str(self.value)
+        return str(self.value) + self.symbol</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li><a title="app.view.components.value_data.BaseValue" href="#app.view.components.value_data.BaseValue">BaseValue</a></li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="app.view.components.value_data.PercentageValue.symbol"><code class="name">var <span class="ident">symbol</span></code></dt>
+<dd>
+<section class="desc"><p>str(object='') -&gt; str
+str(bytes_or_buffer[, encoding[, errors]]) -&gt; str</p>
+<p>Create a new string object from the given object. If encoding or
+errors is specified, then the object must expose a data buffer
+that will be decoded using the given encoding and error handler.
+Otherwise, returns the result of object.<strong>str</strong>() (if defined)
+or repr(object).
+encoding defaults to sys.getdefaultencoding().
+errors defaults to 'strict'.</p></section>
+</dd>
+</dl>
+<h3>Inherited members</h3>
+<ul class="hlist">
+<li><code><b><a title="app.view.components.value_data.BaseValue" href="#app.view.components.value_data.BaseValue">BaseValue</a></b></code>:
+<ul class="hlist">
+<li><code><a title="app.view.components.value_data.BaseValue.isValueValid" href="#app.view.components.value_data.BaseValue.isValueValid">isValueValid</a></code></li>
+<li><code><a title="app.view.components.value_data.BaseValue.typeCheckers" href="#app.view.components.value_data.BaseValue.typeCheckers">typeCheckers</a></code></li>
+</ul>
+</li>
+</ul>
+</dd>
+<dt id="app.view.components.value_data.Value"><code class="flex name class">
+<span>class <span class="ident">Value</span></span>
+<span>(</span><span>value, isReadOnly=True, parent=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Helper method to gracefully wrap value</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>value</code></strong> :&ensp;<code>mixed</code></dt>
+<dd>
+<p>A value</p>
+</dd>
+<dt><strong><code>isReadOnly</code></strong> :&ensp;<code>bool</code></dt>
+<dd>Can this value be modified?</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Value(QLineEdit):
+    &#39;&#39;&#39;
+        Helper method to gracefully wrap value
+
+        Args:
+            value (mixed):      A value
+            isReadOnly (bool):  Can this value be modified?
+    &#39;&#39;&#39;
+    def __init__(self, value, isReadOnly: bool = True, parent=None):
+        super().__init__(str(value), parent)
+        self.setReadOnly(isReadOnly)
+
+    def updateValue(self, value):
+        &#39;&#39;&#39;
+            Update the value
+
+            Args:
+                value (mixed): The value to update with
+        &#39;&#39;&#39;
+        self.setText(str(value))</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt5.QtWidgets.QLineEdit</li>
+<li>PyQt5.QtWidgets.QWidget</li>
+<li>PyQt5.QtCore.QObject</li>
+<li>sip.wrapper</li>
+<li>PyQt5.QtGui.QPaintDevice</li>
+<li>sip.simplewrapper</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="app.view.components.value_data.Value.updateValue"><code class="name flex">
+<span>def <span class="ident">updateValue</span></span>(<span>self, value)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Update the value</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>value</code></strong> :&ensp;<code>mixed</code></dt>
+<dd>The value to update with</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def updateValue(self, value):
+    &#39;&#39;&#39;
+        Update the value
+
+        Args:
+            value (mixed): The value to update with
+    &#39;&#39;&#39;
+    self.setText(str(value))</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+<dt id="app.view.components.value_data.ValueData"><code class="flex name class">
+<span>class <span class="ident">ValueData</span></span>
+<span>(</span><span>label=None, parent=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>ValueData</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>Label</code></strong> :&ensp;<code>str</code></dt>
+<dd>A label for the group of data</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class ValueData(QHBoxLayout):
+    &#39;&#39;&#39;
+        ValueData
+
+        Args:
+            Label (str): A label for the group of data
+    &#39;&#39;&#39;
+    def __init__(self, label=None, parent=None):
+        super().__init__(parent)
+        self.groups = []
+        self.groupIndex = 0
+        self.addColumn(label)
+
+    def addColumn(self, label=None):
+        &#39;&#39;&#39;
+            Add a column of data
+
+            Args:
+                label (str): The label to add to this column
+        &#39;&#39;&#39;
+        group = QGroupBox(label)
+        innerGroup = QFormLayout()
+        innerGroup.setAlignment(Qt.AlignTop)
+        group.setLayout(innerGroup)
+        group.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+        self.addWidget(group)
+        self.groups.append(innerGroup)
+        self.groupIndex = len(self.groups) - 1
+
+    def addRow(self, name: str, value):
+        &#39;&#39;&#39;
+            Add a row to the current column, with a name and value
+
+            Args:
+                name    (str): A name for this row as a label
+                value   (mixed): A value for this data
+        &#39;&#39;&#39;
+        value = Value(str(value))
+        self.groups[self.groupIndex].addRow(
+            name + &#34; &#34; if name[-1] != &#39; &#39; else name, value)
+        value.setReadOnly(True)
+        return value
+
+    def done(self):
+        &#39;&#39;&#39;
+            A final method, that removes the whitespace
+        &#39;&#39;&#39;
+        self.addStretch(0)
+        return self</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>PyQt5.QtWidgets.QHBoxLayout</li>
+<li>PyQt5.QtWidgets.QBoxLayout</li>
+<li>PyQt5.QtWidgets.QLayout</li>
+<li>PyQt5.QtCore.QObject</li>
+<li>PyQt5.QtWidgets.QLayoutItem</li>
+<li>sip.wrapper</li>
+<li>sip.simplewrapper</li>
+</ul>
+<h3>Methods</h3>
+<dl>
+<dt id="app.view.components.value_data.ValueData.addColumn"><code class="name flex">
+<span>def <span class="ident">addColumn</span></span>(<span>self, label=None)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Add a column of data</p>
+<h2 id="args">Args</h2>
+<dl>
+<dt><strong><code>label</code></strong> :&ensp;<code>str</code></dt>
+<dd>The label to add to this column</dd>
+</dl></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addColumn(self, label=None):
+    &#39;&#39;&#39;
+        Add a column of data
+
+        Args:
+            label (str): The label to add to this column
+    &#39;&#39;&#39;
+    group = QGroupBox(label)
+    innerGroup = QFormLayout()
+    innerGroup.setAlignment(Qt.AlignTop)
+    group.setLayout(innerGroup)
+    group.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Fixed)
+    self.addWidget(group)
+    self.groups.append(innerGroup)
+    self.groupIndex = len(self.groups) - 1</code></pre>
+</details>
+</dd>
+<dt id="app.view.components.value_data.ValueData.addRow"><code class="name flex">
+<span>def <span class="ident">addRow</span></span>(<span>self, name, value)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>Add a row to the current column, with a name and value</p>
+<h2 id="args">Args</h2>
+<p>name
+(str): A name for this row as a label
+value
+(mixed): A value for this data</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def addRow(self, name: str, value):
+    &#39;&#39;&#39;
+        Add a row to the current column, with a name and value
+
+        Args:
+            name    (str): A name for this row as a label
+            value   (mixed): A value for this data
+    &#39;&#39;&#39;
+    value = Value(str(value))
+    self.groups[self.groupIndex].addRow(
+        name + &#34; &#34; if name[-1] != &#39; &#39; else name, value)
+    value.setReadOnly(True)
+    return value</code></pre>
+</details>
+</dd>
+<dt id="app.view.components.value_data.ValueData.done"><code class="name flex">
+<span>def <span class="ident">done</span></span>(<span>self)</span>
+</code></dt>
+<dd>
+<section class="desc"><p>A final method, that removes the whitespace</p></section>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def done(self):
+    &#39;&#39;&#39;
+        A final method, that removes the whitespace
+    &#39;&#39;&#39;
+    self.addStretch(0)
+    return self</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="app.view.components" href="index.html">app.view.components</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="app.view.components.value_data.BaseValue" href="#app.view.components.value_data.BaseValue">BaseValue</a></code></h4>
+<ul class="">
+<li><code><a title="app.view.components.value_data.BaseValue.isValueValid" href="#app.view.components.value_data.BaseValue.isValueValid">isValueValid</a></code></li>
+<li><code><a title="app.view.components.value_data.BaseValue.typeCheckers" href="#app.view.components.value_data.BaseValue.typeCheckers">typeCheckers</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="app.view.components.value_data.CurrencyValue" href="#app.view.components.value_data.CurrencyValue">CurrencyValue</a></code></h4>
+</li>
+<li>
+<h4><code><a title="app.view.components.value_data.PercentageValue" href="#app.view.components.value_data.PercentageValue">PercentageValue</a></code></h4>
+<ul class="">
+<li><code><a title="app.view.components.value_data.PercentageValue.symbol" href="#app.view.components.value_data.PercentageValue.symbol">symbol</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="app.view.components.value_data.Value" href="#app.view.components.value_data.Value">Value</a></code></h4>
+<ul class="">
+<li><code><a title="app.view.components.value_data.Value.updateValue" href="#app.view.components.value_data.Value.updateValue">updateValue</a></code></li>
+</ul>
+</li>
+<li>
+<h4><code><a title="app.view.components.value_data.ValueData" href="#app.view.components.value_data.ValueData">ValueData</a></code></h4>
+<ul class="">
+<li><code><a title="app.view.components.value_data.ValueData.addColumn" href="#app.view.components.value_data.ValueData.addColumn">addColumn</a></code></li>
+<li><code><a title="app.view.components.value_data.ValueData.addRow" href="#app.view.components.value_data.ValueData.addRow">addRow</a></code></li>
+<li><code><a title="app.view.components.value_data.ValueData.done" href="#app.view.components.value_data.ValueData.done">done</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc"><cite>pdoc</cite> 0.7.1</a>.</p>
+</footer>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+<script>hljs.initHighlightingOnLoad()</script>
+</body>
+</html>
