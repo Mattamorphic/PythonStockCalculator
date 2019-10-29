@@ -45,12 +45,6 @@ class App(QMainWindow):
         worker.progressBytes.connect(self.updateProgressPercentage)
         worker.start()
 
-    def stockUpdate(self):
-        '''
-            Updates the state of the stock application based on updates from the controls
-        '''
-        raise ValueError("Not Implemented")
-
     def initUI(self, source):
         '''
             Initializes the Stock UI

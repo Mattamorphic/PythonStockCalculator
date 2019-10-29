@@ -76,12 +76,6 @@ class App(QMainWindow):
         worker.progressBytes.connect(self.updateProgressPercentage)
         worker.start()
 
-    def stockUpdate(self):
-        &#39;&#39;&#39;
-            Updates the state of the stock application based on updates from the controls
-        &#39;&#39;&#39;
-        raise ValueError(&#34;Not Implemented&#34;)
-
     def initUI(self, source):
         &#39;&#39;&#39;
             Initializes the Stock UI
@@ -181,12 +175,6 @@ class App(QMainWindow):
         worker.progressLabel.connect(self.loadingController.updateProgress)
         worker.progressBytes.connect(self.updateProgressPercentage)
         worker.start()
-
-    def stockUpdate(self):
-        &#39;&#39;&#39;
-            Updates the state of the stock application based on updates from the controls
-        &#39;&#39;&#39;
-        raise ValueError(&#34;Not Implemented&#34;)
 
     def initUI(self, source):
         &#39;&#39;&#39;
@@ -363,22 +351,6 @@ controller and attaches the widget (as a view)</p>
     worker.start()</code></pre>
 </details>
 </dd>
-<dt id="app.app.App.stockUpdate"><code class="name flex">
-<span>def <span class="ident">stockUpdate</span></span>(<span>self)</span>
-</code></dt>
-<dd>
-<section class="desc"><p>Updates the state of the stock application based on updates from the controls</p></section>
-<details class="source">
-<summary>
-<span>Expand source code</span>
-</summary>
-<pre><code class="python">def stockUpdate(self):
-    &#39;&#39;&#39;
-        Updates the state of the stock application based on updates from the controls
-    &#39;&#39;&#39;
-    raise ValueError(&#34;Not Implemented&#34;)</code></pre>
-</details>
-</dd>
 <dt id="app.app.App.updateProgressPercentage"><code class="name flex">
 <span>def <span class="ident">updateProgressPercentage</span></span>(<span>self, bytes)</span>
 </code></dt>
@@ -446,7 +418,6 @@ controller and attaches the widget (as a view)</p>
 <li><code><a title="app.app.App.initMain" href="#app.app.App.initMain">initMain</a></code></li>
 <li><code><a title="app.app.App.initUI" href="#app.app.App.initUI">initUI</a></code></li>
 <li><code><a title="app.app.App.loadModel" href="#app.app.App.loadModel">loadModel</a></code></li>
-<li><code><a title="app.app.App.stockUpdate" href="#app.app.App.stockUpdate">stockUpdate</a></code></li>
 <li><code><a title="app.app.App.updateProgressPercentage" href="#app.app.App.updateProgressPercentage">updateProgressPercentage</a></code></li>
 <li><code><a title="app.app.App.updateStatusBar" href="#app.app.App.updateStatusBar">updateStatusBar</a></code></li>
 </ul>
