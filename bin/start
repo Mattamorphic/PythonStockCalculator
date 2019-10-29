@@ -40,8 +40,11 @@ d8'   .8P   88   88.  .88 88         88
 print("-\t[Checking location]")
 execute_step(["ls", "venv"],"Location check failed")
 
-print("-\t[Deactivating venv]")
-execute_step(["deactivate"],"Couldn't deactivate")
+try:
+  print("-\t[Deactivating venv]")
+  execute_step(["deactivate"], "Couldn't deactivate")
+except:
+  pass
 
 print("-\t[Starting our venv]")
 execute_step(["sh", "./venv/bin/activate"],"Couldn't start virtual env")
